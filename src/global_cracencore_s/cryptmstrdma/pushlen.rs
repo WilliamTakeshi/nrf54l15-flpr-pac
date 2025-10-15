@@ -2,67 +2,67 @@
 pub type R = crate::R<PushlenSpec>;
 #[doc = "Register `PUSHLEN` writer"]
 pub type W = crate::W<PushlenSpec>;
-#[doc = "Field `PUSHLEN` reader - "]
+#[doc = "Field `PUSHLEN` reader - Length of data block"]
 pub type PushlenR = crate::FieldReader<u32>;
-#[doc = "Field `PUSHLEN` writer - "]
+#[doc = "Field `PUSHLEN` writer - Length of data block"]
 pub type PushlenW<'a, REG> = crate::FieldWriter<'a, REG, 28, u32>;
-#[doc = "Field `PUSHCSTADDR` reader - "]
+#[doc = "Field `PUSHCSTADDR` reader - Constant address"]
 pub type PushcstaddrR = crate::BitReader;
-#[doc = "Field `PUSHCSTADDR` writer - "]
+#[doc = "Field `PUSHCSTADDR` writer - Constant address"]
 pub type PushcstaddrW<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `PUSHREALIGN` reader - "]
+#[doc = "Field `PUSHREALIGN` reader - Realign length"]
 pub type PushrealignR = crate::BitReader;
-#[doc = "Field `PUSHREALIGN` writer - "]
+#[doc = "Field `PUSHREALIGN` writer - Realign length"]
 pub type PushrealignW<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `PUSHDISCARD` reader - "]
+#[doc = "Field `PUSHDISCARD` reader - Discard data"]
 pub type PushdiscardR = crate::BitReader;
-#[doc = "Field `PUSHDISCARD` writer - "]
+#[doc = "Field `PUSHDISCARD` writer - Discard data"]
 pub type PushdiscardW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
-    #[doc = "Bits 0:27"]
+    #[doc = "Bits 0:27 - Length of data block"]
     #[inline(always)]
     pub fn pushlen(&self) -> PushlenR {
         PushlenR::new(self.bits & 0x0fff_ffff)
     }
-    #[doc = "Bit 28"]
+    #[doc = "Bit 28 - Constant address"]
     #[inline(always)]
     pub fn pushcstaddr(&self) -> PushcstaddrR {
         PushcstaddrR::new(((self.bits >> 28) & 1) != 0)
     }
-    #[doc = "Bit 29"]
+    #[doc = "Bit 29 - Realign length"]
     #[inline(always)]
     pub fn pushrealign(&self) -> PushrealignR {
         PushrealignR::new(((self.bits >> 29) & 1) != 0)
     }
-    #[doc = "Bit 30"]
+    #[doc = "Bit 30 - Discard data"]
     #[inline(always)]
     pub fn pushdiscard(&self) -> PushdiscardR {
         PushdiscardR::new(((self.bits >> 30) & 1) != 0)
     }
 }
 impl W {
-    #[doc = "Bits 0:27"]
+    #[doc = "Bits 0:27 - Length of data block"]
     #[inline(always)]
     pub fn pushlen(&mut self) -> PushlenW<'_, PushlenSpec> {
         PushlenW::new(self, 0)
     }
-    #[doc = "Bit 28"]
+    #[doc = "Bit 28 - Constant address"]
     #[inline(always)]
     pub fn pushcstaddr(&mut self) -> PushcstaddrW<'_, PushlenSpec> {
         PushcstaddrW::new(self, 28)
     }
-    #[doc = "Bit 29"]
+    #[doc = "Bit 29 - Realign length"]
     #[inline(always)]
     pub fn pushrealign(&mut self) -> PushrealignW<'_, PushlenSpec> {
         PushrealignW::new(self, 29)
     }
-    #[doc = "Bit 30"]
+    #[doc = "Bit 30 - Discard data"]
     #[inline(always)]
     pub fn pushdiscard(&mut self) -> PushdiscardW<'_, PushlenSpec> {
         PushdiscardW::new(self, 30)
     }
 }
-#[doc = "Push Length\n\nYou can [`read`](crate::Reg::read) this register and get [`pushlen::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pushlen::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Push Length (only used in direct mode)\n\nYou can [`read`](crate::Reg::read) this register and get [`pushlen::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pushlen::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct PushlenSpec;
 impl crate::RegisterSpec for PushlenSpec {
     type Ux = u32;

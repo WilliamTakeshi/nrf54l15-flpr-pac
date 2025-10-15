@@ -167,7 +167,7 @@ impl W {
         OversampleW::new(self, 0)
     }
 }
-#[doc = "Oversampling configuration. OVERSAMPLE should not be combined with SCAN. The RESOLUTION is applied before averaging, thus for high OVERSAMPLE a higher RESOLUTION should be used.\n\nYou can [`read`](crate::Reg::read) this register and get [`oversample::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`oversample::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Oversampling configuration. OVERSAMPLE should not be combined with SCAN unless burst is enabled. The RESOLUTION is applied before averaging, thus for high OVERSAMPLE a higher RESOLUTION should be used.\n\nYou can [`read`](crate::Reg::read) this register and get [`oversample::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`oversample::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct OversampleSpec;
 impl crate::RegisterSpec for OversampleSpec {
     type Ux = u32;

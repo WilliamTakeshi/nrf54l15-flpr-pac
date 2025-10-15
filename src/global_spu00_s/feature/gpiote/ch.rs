@@ -132,7 +132,7 @@ impl W {
         LockW::new(self, 8)
     }
 }
-#[doc = "Description collection: Configuration of features for channel o of GPIOTE\\[n\\]\n\nYou can [`read`](crate::Reg::read) this register and get [`ch::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ch::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Description collection: Security configuration for channel o of GPIOTE\\[n\\]\n\nYou can [`read`](crate::Reg::read) this register and get [`ch::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ch::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct ChSpec;
 impl crate::RegisterSpec for ChSpec {
     type Ux = u32;

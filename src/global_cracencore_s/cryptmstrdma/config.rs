@@ -2,81 +2,81 @@
 pub type R = crate::R<ConfigSpec>;
 #[doc = "Register `CONFIG` writer"]
 pub type W = crate::W<ConfigSpec>;
-#[doc = "Field `FETCHCTRLINDIRECT` reader - "]
+#[doc = "Field `FETCHCTRLINDIRECT` reader - Fetcher scatter/gather."]
 pub type FetchctrlindirectR = crate::BitReader;
-#[doc = "Field `FETCHCTRLINDIRECT` writer - "]
+#[doc = "Field `FETCHCTRLINDIRECT` writer - Fetcher scatter/gather."]
 pub type FetchctrlindirectW<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `PUSHCTRLINDIRECT` reader - "]
+#[doc = "Field `PUSHCTRLINDIRECT` reader - Pusher scatter/gather."]
 pub type PushctrlindirectR = crate::BitReader;
-#[doc = "Field `PUSHCTRLINDIRECT` writer - "]
+#[doc = "Field `PUSHCTRLINDIRECT` writer - Pusher scatter/gather."]
 pub type PushctrlindirectW<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `FETCHSTOP` reader - "]
+#[doc = "Field `FETCHSTOP` reader - Stop fetcher."]
 pub type FetchstopR = crate::BitReader;
-#[doc = "Field `FETCHSTOP` writer - "]
+#[doc = "Field `FETCHSTOP` writer - Stop fetcher."]
 pub type FetchstopW<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `PUSHSTOP` reader - "]
+#[doc = "Field `PUSHSTOP` reader - Stop pusher DMA."]
 pub type PushstopR = crate::BitReader;
-#[doc = "Field `PUSHSTOP` writer - "]
+#[doc = "Field `PUSHSTOP` writer - Stop pusher DMA."]
 pub type PushstopW<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `SOFTRST` reader - "]
+#[doc = "Field `SOFTRST` reader - Soft reset the cryptomaster."]
 pub type SoftrstR = crate::BitReader;
-#[doc = "Field `SOFTRST` writer - "]
+#[doc = "Field `SOFTRST` writer - Soft reset the cryptomaster."]
 pub type SoftrstW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
-    #[doc = "Bit 0"]
+    #[doc = "Bit 0 - Fetcher scatter/gather."]
     #[inline(always)]
     pub fn fetchctrlindirect(&self) -> FetchctrlindirectR {
         FetchctrlindirectR::new((self.bits & 1) != 0)
     }
-    #[doc = "Bit 1"]
+    #[doc = "Bit 1 - Pusher scatter/gather."]
     #[inline(always)]
     pub fn pushctrlindirect(&self) -> PushctrlindirectR {
         PushctrlindirectR::new(((self.bits >> 1) & 1) != 0)
     }
-    #[doc = "Bit 2"]
+    #[doc = "Bit 2 - Stop fetcher."]
     #[inline(always)]
     pub fn fetchstop(&self) -> FetchstopR {
         FetchstopR::new(((self.bits >> 2) & 1) != 0)
     }
-    #[doc = "Bit 3"]
+    #[doc = "Bit 3 - Stop pusher DMA."]
     #[inline(always)]
     pub fn pushstop(&self) -> PushstopR {
         PushstopR::new(((self.bits >> 3) & 1) != 0)
     }
-    #[doc = "Bit 4"]
+    #[doc = "Bit 4 - Soft reset the cryptomaster."]
     #[inline(always)]
     pub fn softrst(&self) -> SoftrstR {
         SoftrstR::new(((self.bits >> 4) & 1) != 0)
     }
 }
 impl W {
-    #[doc = "Bit 0"]
+    #[doc = "Bit 0 - Fetcher scatter/gather."]
     #[inline(always)]
     pub fn fetchctrlindirect(&mut self) -> FetchctrlindirectW<'_, ConfigSpec> {
         FetchctrlindirectW::new(self, 0)
     }
-    #[doc = "Bit 1"]
+    #[doc = "Bit 1 - Pusher scatter/gather."]
     #[inline(always)]
     pub fn pushctrlindirect(&mut self) -> PushctrlindirectW<'_, ConfigSpec> {
         PushctrlindirectW::new(self, 1)
     }
-    #[doc = "Bit 2"]
+    #[doc = "Bit 2 - Stop fetcher."]
     #[inline(always)]
     pub fn fetchstop(&mut self) -> FetchstopW<'_, ConfigSpec> {
         FetchstopW::new(self, 2)
     }
-    #[doc = "Bit 3"]
+    #[doc = "Bit 3 - Stop pusher DMA."]
     #[inline(always)]
     pub fn pushstop(&mut self) -> PushstopW<'_, ConfigSpec> {
         PushstopW::new(self, 3)
     }
-    #[doc = "Bit 4"]
+    #[doc = "Bit 4 - Soft reset the cryptomaster."]
     #[inline(always)]
     pub fn softrst(&mut self) -> SoftrstW<'_, ConfigSpec> {
         SoftrstW::new(self, 4)
     }
 }
-#[doc = "Configuration\n\nYou can [`read`](crate::Reg::read) this register and get [`config::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`config::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Cryptomaster configuration\n\nYou can [`read`](crate::Reg::read) this register and get [`config::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`config::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct ConfigSpec;
 impl crate::RegisterSpec for ConfigSpec {
     type Ux = u32;

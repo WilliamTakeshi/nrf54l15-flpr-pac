@@ -8,8 +8,6 @@ pub enum Errorstatus {
     NoError = 0,
     #[doc = "1: End of INPTR job list before data structure was read."]
     PrematureInptrEnd = 1,
-    #[doc = "2: End of OUTPTR job list before data structure was read."]
-    PrematureOutptrEnd = 2,
     #[doc = "4: Bus error during DMA access."]
     DmaError = 4,
 }
@@ -32,7 +30,6 @@ impl ErrorstatusR {
         match self.bits {
             0 => Some(Errorstatus::NoError),
             1 => Some(Errorstatus::PrematureInptrEnd),
-            2 => Some(Errorstatus::PrematureOutptrEnd),
             4 => Some(Errorstatus::DmaError),
             _ => None,
         }
@@ -46,11 +43,6 @@ impl ErrorstatusR {
     #[inline(always)]
     pub fn is_premature_inptr_end(&self) -> bool {
         *self == Errorstatus::PrematureInptrEnd
-    }
-    #[doc = "End of OUTPTR job list before data structure was read."]
-    #[inline(always)]
-    pub fn is_premature_outptr_end(&self) -> bool {
-        *self == Errorstatus::PrematureOutptrEnd
     }
     #[doc = "Bus error during DMA access."]
     #[inline(always)]

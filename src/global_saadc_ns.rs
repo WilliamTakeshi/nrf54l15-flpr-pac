@@ -26,25 +26,27 @@ pub struct RegisterBlock {
     publish_calibratedone: PublishCalibratedone,
     publish_stopped: PublishStopped,
     publish_ch: [PublishCh; 8],
-    _reserved22: [u8; 0x0128],
+    _reserved22: [u8; 0x28],
+    shorts: Shorts,
+    _reserved23: [u8; 0xfc],
     inten: Inten,
     intenset: Intenset,
     intenclr: Intenclr,
-    _reserved25: [u8; 0xf4],
+    _reserved26: [u8; 0xf4],
     status: Status,
-    _reserved26: [u8; 0x3c],
+    _reserved27: [u8; 0x3c],
     trim: Trim,
-    _reserved27: [u8; 0xa8],
+    _reserved28: [u8; 0xa8],
     enable: Enable,
-    _reserved28: [u8; 0x0c],
+    _reserved29: [u8; 0x0c],
     ch: [Ch; 8],
-    _reserved29: [u8; 0x60],
+    _reserved30: [u8; 0x60],
     resolution: Resolution,
     oversample: Oversample,
     samplerate: Samplerate,
-    _reserved32: [u8; 0x2c],
+    _reserved33: [u8; 0x2c],
     result: Result,
-    _reserved33: [u8; 0x18],
+    _reserved34: [u8; 0x18],
     noiseshape: Noiseshape,
 }
 impl RegisterBlock {
@@ -88,7 +90,7 @@ impl RegisterBlock {
     pub const fn subscribe_calibrateoffset(&self) -> &SubscribeCalibrateoffset {
         &self.subscribe_calibrateoffset
     }
-    #[doc = "0x100 - The ADC has started"]
+    #[doc = "0x100 - The ADC DMA has started"]
     #[inline(always)]
     pub const fn events_started(&self) -> &EventsStarted {
         &self.events_started
@@ -113,7 +115,7 @@ impl RegisterBlock {
     pub const fn events_calibratedone(&self) -> &EventsCalibratedone {
         &self.events_calibratedone
     }
-    #[doc = "0x114 - The ADC has stopped"]
+    #[doc = "0x114 - The ADC DMA has stopped"]
     #[inline(always)]
     pub const fn events_stopped(&self) -> &EventsStopped {
         &self.events_stopped
@@ -170,6 +172,11 @@ impl RegisterBlock {
     pub fn publish_ch_iter(&self) -> impl Iterator<Item = &PublishCh> {
         self.publish_ch.iter()
     }
+    #[doc = "0x200 - Shortcuts between local events and tasks"]
+    #[inline(always)]
+    pub const fn shorts(&self) -> &Shorts {
+        &self.shorts
+    }
     #[doc = "0x300 - Enable or disable interrupt"]
     #[inline(always)]
     pub const fn inten(&self) -> &Inten {
@@ -216,12 +223,12 @@ impl RegisterBlock {
     pub const fn resolution(&self) -> &Resolution {
         &self.resolution
     }
-    #[doc = "0x5f4 - Oversampling configuration. OVERSAMPLE should not be combined with SCAN. The RESOLUTION is applied before averaging, thus for high OVERSAMPLE a higher RESOLUTION should be used."]
+    #[doc = "0x5f4 - Oversampling configuration. OVERSAMPLE should not be combined with SCAN unless burst is enabled. The RESOLUTION is applied before averaging, thus for high OVERSAMPLE a higher RESOLUTION should be used."]
     #[inline(always)]
     pub const fn oversample(&self) -> &Oversample {
         &self.oversample
     }
-    #[doc = "0x5f8 - Controls normal or continuous sample rate"]
+    #[doc = "0x5f8 - Configures the sampling rate for either task-triggered or continuous operation using a local timer"]
     #[inline(always)]
     pub const fn samplerate(&self) -> &Samplerate {
         &self.samplerate
@@ -231,7 +238,7 @@ impl RegisterBlock {
     pub const fn result(&self) -> &Result {
         &self.result
     }
-    #[doc = "0x654 - Enable noise shaping"]
+    #[doc = "0x654 - SAADC provides two operational noise shaping modes (one that prioritizes higher bandwith, while the other prioritizes higher accuracy) that allow trade-offs between ADC resolution, power consumption, and signal bandwidth."]
     #[inline(always)]
     pub const fn noiseshape(&self) -> &Noiseshape {
         &self.noiseshape
@@ -278,10 +285,10 @@ pub type SubscribeCalibrateoffset =
     crate::Reg<subscribe_calibrateoffset::SubscribeCalibrateoffsetSpec>;
 #[doc = "Subscribe configuration for task CALIBRATEOFFSET"]
 pub mod subscribe_calibrateoffset;
-#[doc = "EVENTS_STARTED (rw) register accessor: The ADC has started\n\nYou can [`read`](crate::Reg::read) this register and get [`events_started::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_started::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@events_started`] module"]
+#[doc = "EVENTS_STARTED (rw) register accessor: The ADC DMA has started\n\nYou can [`read`](crate::Reg::read) this register and get [`events_started::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_started::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@events_started`] module"]
 #[doc(alias = "EVENTS_STARTED")]
 pub type EventsStarted = crate::Reg<events_started::EventsStartedSpec>;
-#[doc = "The ADC has started"]
+#[doc = "The ADC DMA has started"]
 pub mod events_started;
 #[doc = "EVENTS_END (rw) register accessor: The ADC has filled up the Result buffer\n\nYou can [`read`](crate::Reg::read) this register and get [`events_end::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_end::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@events_end`] module"]
 #[doc(alias = "EVENTS_END")]
@@ -303,10 +310,10 @@ pub mod events_resultdone;
 pub type EventsCalibratedone = crate::Reg<events_calibratedone::EventsCalibratedoneSpec>;
 #[doc = "Calibration is complete"]
 pub mod events_calibratedone;
-#[doc = "EVENTS_STOPPED (rw) register accessor: The ADC has stopped\n\nYou can [`read`](crate::Reg::read) this register and get [`events_stopped::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_stopped::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@events_stopped`] module"]
+#[doc = "EVENTS_STOPPED (rw) register accessor: The ADC DMA has stopped\n\nYou can [`read`](crate::Reg::read) this register and get [`events_stopped::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_stopped::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@events_stopped`] module"]
 #[doc(alias = "EVENTS_STOPPED")]
 pub type EventsStopped = crate::Reg<events_stopped::EventsStoppedSpec>;
-#[doc = "The ADC has stopped"]
+#[doc = "The ADC DMA has stopped"]
 pub mod events_stopped;
 #[doc = "Peripheral events."]
 pub use self::events_ch::EventsCh;
@@ -348,6 +355,11 @@ pub use self::publish_ch::PublishCh;
 #[doc = r"Cluster"]
 #[doc = "Publish configuration for events"]
 pub mod publish_ch;
+#[doc = "SHORTS (rw) register accessor: Shortcuts between local events and tasks\n\nYou can [`read`](crate::Reg::read) this register and get [`shorts::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`shorts::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@shorts`] module"]
+#[doc(alias = "SHORTS")]
+pub type Shorts = crate::Reg<shorts::ShortsSpec>;
+#[doc = "Shortcuts between local events and tasks"]
+pub mod shorts;
 #[doc = "INTEN (rw) register accessor: Enable or disable interrupt\n\nYou can [`read`](crate::Reg::read) this register and get [`inten::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`inten::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@inten`] module"]
 #[doc(alias = "INTEN")]
 pub type Inten = crate::Reg<inten::IntenSpec>;
@@ -388,23 +400,23 @@ pub mod ch;
 pub type Resolution = crate::Reg<resolution::ResolutionSpec>;
 #[doc = "Resolution configuration"]
 pub mod resolution;
-#[doc = "OVERSAMPLE (rw) register accessor: Oversampling configuration. OVERSAMPLE should not be combined with SCAN. The RESOLUTION is applied before averaging, thus for high OVERSAMPLE a higher RESOLUTION should be used.\n\nYou can [`read`](crate::Reg::read) this register and get [`oversample::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`oversample::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@oversample`] module"]
+#[doc = "OVERSAMPLE (rw) register accessor: Oversampling configuration. OVERSAMPLE should not be combined with SCAN unless burst is enabled. The RESOLUTION is applied before averaging, thus for high OVERSAMPLE a higher RESOLUTION should be used.\n\nYou can [`read`](crate::Reg::read) this register and get [`oversample::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`oversample::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@oversample`] module"]
 #[doc(alias = "OVERSAMPLE")]
 pub type Oversample = crate::Reg<oversample::OversampleSpec>;
-#[doc = "Oversampling configuration. OVERSAMPLE should not be combined with SCAN. The RESOLUTION is applied before averaging, thus for high OVERSAMPLE a higher RESOLUTION should be used."]
+#[doc = "Oversampling configuration. OVERSAMPLE should not be combined with SCAN unless burst is enabled. The RESOLUTION is applied before averaging, thus for high OVERSAMPLE a higher RESOLUTION should be used."]
 pub mod oversample;
-#[doc = "SAMPLERATE (rw) register accessor: Controls normal or continuous sample rate\n\nYou can [`read`](crate::Reg::read) this register and get [`samplerate::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`samplerate::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@samplerate`] module"]
+#[doc = "SAMPLERATE (rw) register accessor: Configures the sampling rate for either task-triggered or continuous operation using a local timer\n\nYou can [`read`](crate::Reg::read) this register and get [`samplerate::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`samplerate::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@samplerate`] module"]
 #[doc(alias = "SAMPLERATE")]
 pub type Samplerate = crate::Reg<samplerate::SamplerateSpec>;
-#[doc = "Controls normal or continuous sample rate"]
+#[doc = "Configures the sampling rate for either task-triggered or continuous operation using a local timer"]
 pub mod samplerate;
 #[doc = "RESULT EasyDMA channel"]
 pub use self::result::Result;
 #[doc = r"Cluster"]
 #[doc = "RESULT EasyDMA channel"]
 pub mod result;
-#[doc = "NOISESHAPE (rw) register accessor: Enable noise shaping\n\nYou can [`read`](crate::Reg::read) this register and get [`noiseshape::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`noiseshape::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@noiseshape`] module"]
+#[doc = "NOISESHAPE (rw) register accessor: SAADC provides two operational noise shaping modes (one that prioritizes higher bandwith, while the other prioritizes higher accuracy) that allow trade-offs between ADC resolution, power consumption, and signal bandwidth.\n\nYou can [`read`](crate::Reg::read) this register and get [`noiseshape::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`noiseshape::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@noiseshape`] module"]
 #[doc(alias = "NOISESHAPE")]
 pub type Noiseshape = crate::Reg<noiseshape::NoiseshapeSpec>;
-#[doc = "Enable noise shaping"]
+#[doc = "SAADC provides two operational noise shaping modes (one that prioritizes higher bandwith, while the other prioritizes higher accuracy) that allow trade-offs between ADC resolution, power consumption, and signal bandwidth."]
 pub mod noiseshape;

@@ -842,6 +842,126 @@ where
         self.variant(PwmperiodendWO::Set)
     }
 }
+#[doc = "Write '1' to enable interrupt for event PWMREADY\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Pwmready {
+    #[doc = "0: Read: Disabled"]
+    Disabled = 0,
+    #[doc = "1: Read: Enabled"]
+    Enabled = 1,
+}
+impl From<Pwmready> for bool {
+    #[inline(always)]
+    fn from(variant: Pwmready) -> Self {
+        variant as u8 != 0
+    }
+}
+#[doc = "Field `PWMREADY` reader - Write '1' to enable interrupt for event PWMREADY"]
+pub type PwmreadyR = crate::BitReader<Pwmready>;
+impl PwmreadyR {
+    #[doc = "Get enumerated values variant"]
+    #[inline(always)]
+    pub const fn variant(&self) -> Pwmready {
+        match self.bits {
+            false => Pwmready::Disabled,
+            true => Pwmready::Enabled,
+        }
+    }
+    #[doc = "Read: Disabled"]
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        *self == Pwmready::Disabled
+    }
+    #[doc = "Read: Enabled"]
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        *self == Pwmready::Enabled
+    }
+}
+#[doc = "Write '1' to enable interrupt for event PWMREADY\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum PwmreadyWO {
+    #[doc = "1: Enable"]
+    Set = 1,
+}
+impl From<PwmreadyWO> for bool {
+    #[inline(always)]
+    fn from(variant: PwmreadyWO) -> Self {
+        variant as u8 != 0
+    }
+}
+#[doc = "Field `PWMREADY` writer - Write '1' to enable interrupt for event PWMREADY"]
+pub type PwmreadyW<'a, REG> = crate::BitWriter<'a, REG, PwmreadyWO>;
+impl<'a, REG> PwmreadyW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Enable"]
+    #[inline(always)]
+    pub fn set_(self) -> &'a mut crate::W<REG> {
+        self.variant(PwmreadyWO::Set)
+    }
+}
+#[doc = "Write '1' to enable interrupt for event CLKOUTREADY\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Clkoutready {
+    #[doc = "0: Read: Disabled"]
+    Disabled = 0,
+    #[doc = "1: Read: Enabled"]
+    Enabled = 1,
+}
+impl From<Clkoutready> for bool {
+    #[inline(always)]
+    fn from(variant: Clkoutready) -> Self {
+        variant as u8 != 0
+    }
+}
+#[doc = "Field `CLKOUTREADY` reader - Write '1' to enable interrupt for event CLKOUTREADY"]
+pub type ClkoutreadyR = crate::BitReader<Clkoutready>;
+impl ClkoutreadyR {
+    #[doc = "Get enumerated values variant"]
+    #[inline(always)]
+    pub const fn variant(&self) -> Clkoutready {
+        match self.bits {
+            false => Clkoutready::Disabled,
+            true => Clkoutready::Enabled,
+        }
+    }
+    #[doc = "Read: Disabled"]
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        *self == Clkoutready::Disabled
+    }
+    #[doc = "Read: Enabled"]
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        *self == Clkoutready::Enabled
+    }
+}
+#[doc = "Write '1' to enable interrupt for event CLKOUTREADY\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ClkoutreadyWO {
+    #[doc = "1: Enable"]
+    Set = 1,
+}
+impl From<ClkoutreadyWO> for bool {
+    #[inline(always)]
+    fn from(variant: ClkoutreadyWO) -> Self {
+        variant as u8 != 0
+    }
+}
+#[doc = "Field `CLKOUTREADY` writer - Write '1' to enable interrupt for event CLKOUTREADY"]
+pub type ClkoutreadyW<'a, REG> = crate::BitWriter<'a, REG, ClkoutreadyWO>;
+impl<'a, REG> ClkoutreadyW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Enable"]
+    #[inline(always)]
+    pub fn set_(self) -> &'a mut crate::W<REG> {
+        self.variant(ClkoutreadyWO::Set)
+    }
+}
 impl R {
     #[doc = "Bit 0 - Write '1' to enable interrupt for event COMPARE\\[0\\]"]
     #[inline(always)]
@@ -912,6 +1032,16 @@ impl R {
     #[inline(always)]
     pub fn pwmperiodend(&self) -> PwmperiodendR {
         PwmperiodendR::new(((self.bits >> 27) & 1) != 0)
+    }
+    #[doc = "Bit 29 - Write '1' to enable interrupt for event PWMREADY"]
+    #[inline(always)]
+    pub fn pwmready(&self) -> PwmreadyR {
+        PwmreadyR::new(((self.bits >> 29) & 1) != 0)
+    }
+    #[doc = "Bit 30 - Write '1' to enable interrupt for event CLKOUTREADY"]
+    #[inline(always)]
+    pub fn clkoutready(&self) -> ClkoutreadyR {
+        ClkoutreadyR::new(((self.bits >> 30) & 1) != 0)
     }
 }
 impl W {
@@ -984,6 +1114,16 @@ impl W {
     #[inline(always)]
     pub fn pwmperiodend(&mut self) -> PwmperiodendW<'_, Intenset0Spec> {
         PwmperiodendW::new(self, 27)
+    }
+    #[doc = "Bit 29 - Write '1' to enable interrupt for event PWMREADY"]
+    #[inline(always)]
+    pub fn pwmready(&mut self) -> PwmreadyW<'_, Intenset0Spec> {
+        PwmreadyW::new(self, 29)
+    }
+    #[doc = "Bit 30 - Write '1' to enable interrupt for event CLKOUTREADY"]
+    #[inline(always)]
+    pub fn clkoutready(&mut self) -> ClkoutreadyW<'_, Intenset0Spec> {
+        ClkoutreadyW::new(self, 30)
     }
 }
 #[doc = "Enable interrupt\n\nYou can [`read`](crate::Reg::read) this register and get [`intenset0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`intenset0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]

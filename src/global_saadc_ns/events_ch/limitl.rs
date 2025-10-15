@@ -2,7 +2,7 @@
 pub type R = crate::R<LimitlSpec>;
 #[doc = "Register `LIMITL` writer"]
 pub type W = crate::W<LimitlSpec>;
-#[doc = "Last results is equal or below CH\\[n\\].LIMIT.LOW\n\nValue on reset: 0"]
+#[doc = "Last results is below CH\\[n\\].LIMIT.LOW\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Limitl {
     #[doc = "0: Event not generated"]
@@ -16,7 +16,7 @@ impl From<Limitl> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Field `LIMITL` reader - Last results is equal or below CH\\[n\\].LIMIT.LOW"]
+#[doc = "Field `LIMITL` reader - Last results is below CH\\[n\\].LIMIT.LOW"]
 pub type LimitlR = crate::BitReader<Limitl>;
 impl LimitlR {
     #[doc = "Get enumerated values variant"]
@@ -38,7 +38,7 @@ impl LimitlR {
         *self == Limitl::Generated
     }
 }
-#[doc = "Field `LIMITL` writer - Last results is equal or below CH\\[n\\].LIMIT.LOW"]
+#[doc = "Field `LIMITL` writer - Last results is below CH\\[n\\].LIMIT.LOW"]
 pub type LimitlW<'a, REG> = crate::BitWriter<'a, REG, Limitl>;
 impl<'a, REG> LimitlW<'a, REG>
 where
@@ -56,20 +56,20 @@ where
     }
 }
 impl R {
-    #[doc = "Bit 0 - Last results is equal or below CH\\[n\\].LIMIT.LOW"]
+    #[doc = "Bit 0 - Last results is below CH\\[n\\].LIMIT.LOW"]
     #[inline(always)]
     pub fn limitl(&self) -> LimitlR {
         LimitlR::new((self.bits & 1) != 0)
     }
 }
 impl W {
-    #[doc = "Bit 0 - Last results is equal or below CH\\[n\\].LIMIT.LOW"]
+    #[doc = "Bit 0 - Last results is below CH\\[n\\].LIMIT.LOW"]
     #[inline(always)]
     pub fn limitl(&mut self) -> LimitlW<'_, LimitlSpec> {
         LimitlW::new(self, 0)
     }
 }
-#[doc = "Description cluster: Last results is equal or below CH\\[n\\].LIMIT.LOW\n\nYou can [`read`](crate::Reg::read) this register and get [`limitl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`limitl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Description cluster: Last results is below CH\\[n\\].LIMIT.LOW\n\nYou can [`read`](crate::Reg::read) this register and get [`limitl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`limitl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct LimitlSpec;
 impl crate::RegisterSpec for LimitlSpec {
     type Ux = u32;

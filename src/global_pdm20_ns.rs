@@ -18,28 +18,26 @@ pub struct RegisterBlock {
     publish_end: PublishEnd,
     _reserved11: [u8; 0x04],
     publish_dma: PublishDma,
-    _reserved12: [u8; 0x6c],
-    shorts: Shorts,
-    _reserved13: [u8; 0xfc],
+    _reserved12: [u8; 0x016c],
     inten: Inten,
     intenset: Intenset,
     intenclr: Intenclr,
     intpend: Intpend,
-    _reserved17: [u8; 0x01f0],
+    _reserved16: [u8; 0x01f0],
     enable: Enable,
-    _reserved18: [u8; 0x04],
+    _reserved17: [u8; 0x04],
     mode: Mode,
-    _reserved19: [u8; 0x0c],
+    _reserved18: [u8; 0x0c],
     gainl: Gainl,
     gainr: Gainr,
     ratio: Ratio,
-    _reserved22: [u8; 0x1c],
+    _reserved21: [u8; 0x1c],
     psel: Psel,
-    _reserved23: [u8; 0x18],
+    _reserved22: [u8; 0x18],
     sample: Sample,
-    _reserved24: [u8; 0x18],
+    _reserved23: [u8; 0x18],
     prescaler: Prescaler,
-    _reserved25: [u8; 0x017c],
+    _reserved24: [u8; 0x017c],
     dma: Dma,
 }
 impl RegisterBlock {
@@ -102,11 +100,6 @@ impl RegisterBlock {
     #[inline(always)]
     pub const fn publish_dma(&self) -> &PublishDma {
         &self.publish_dma
-    }
-    #[doc = "0x200 - Shortcuts between local events and tasks"]
-    #[inline(always)]
-    pub const fn shorts(&self) -> &Shorts {
-        &self.shorts
     }
     #[doc = "0x300 - Enable or disable interrupt"]
     #[inline(always)]
@@ -234,11 +227,6 @@ pub use self::publish_dma::PublishDma;
 #[doc = r"Cluster"]
 #[doc = "Publish configuration for events"]
 pub mod publish_dma;
-#[doc = "SHORTS (rw) register accessor: Shortcuts between local events and tasks\n\nYou can [`read`](crate::Reg::read) this register and get [`shorts::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`shorts::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@shorts`] module"]
-#[doc(alias = "SHORTS")]
-pub type Shorts = crate::Reg<shorts::ShortsSpec>;
-#[doc = "Shortcuts between local events and tasks"]
-pub mod shorts;
 #[doc = "INTEN (rw) register accessor: Enable or disable interrupt\n\nYou can [`read`](crate::Reg::read) this register and get [`inten::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`inten::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@inten`] module"]
 #[doc(alias = "INTEN")]
 pub type Inten = crate::Reg<inten::IntenSpec>;

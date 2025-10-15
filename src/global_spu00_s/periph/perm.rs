@@ -163,7 +163,7 @@ where
         self.variant(Secattr::NonSecure)
     }
 }
-#[doc = "Security attribution for the DMA transfer\n\nValue on reset: 0"]
+#[doc = "Security attribution for the DMA transfer\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Dmasec {
     #[doc = "1: DMA transfers initiated by this peripheral have the secure attribute set"]
@@ -366,7 +366,7 @@ impl crate::Writable for PermSpec {
     type Safety = crate::Unsafe;
     const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0x0100;
 }
-#[doc = "`reset()` method sets PERM to value 0x8000_000a"]
+#[doc = "`reset()` method sets PERM to value 0x8000_002a"]
 impl crate::Resettable for PermSpec {
-    const RESET_VALUE: u32 = 0x8000_000a;
+    const RESET_VALUE: u32 = 0x8000_002a;
 }

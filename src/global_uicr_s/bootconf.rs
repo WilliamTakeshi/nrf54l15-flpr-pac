@@ -2,10 +2,10 @@
 pub type R = crate::R<BootconfSpec>;
 #[doc = "Register `BOOTCONF` writer"]
 pub type W = crate::W<BootconfSpec>;
-#[doc = "Read access\n\nValue on reset: 1"]
+#[doc = "Read access. Must be enabled in order for the Arm Cortex CPU to start executing from RRAM.\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Read {
-    #[doc = "0: Reading from the region is not allowed"]
+    #[doc = "0: Reading from the region is not allowed."]
     NotAllowed = 0,
     #[doc = "1: Reading from the region is allowed"]
     Allowed = 1,
@@ -16,7 +16,7 @@ impl From<Read> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Field `READ` reader - Read access"]
+#[doc = "Field `READ` reader - Read access. Must be enabled in order for the Arm Cortex CPU to start executing from RRAM."]
 pub type ReadR = crate::BitReader<Read>;
 impl ReadR {
     #[doc = "Get enumerated values variant"]
@@ -27,7 +27,7 @@ impl ReadR {
             true => Read::Allowed,
         }
     }
-    #[doc = "Reading from the region is not allowed"]
+    #[doc = "Reading from the region is not allowed."]
     #[inline(always)]
     pub fn is_not_allowed(&self) -> bool {
         *self == Read::NotAllowed
@@ -38,13 +38,13 @@ impl ReadR {
         *self == Read::Allowed
     }
 }
-#[doc = "Field `READ` writer - Read access"]
+#[doc = "Field `READ` writer - Read access. Must be enabled in order for the Arm Cortex CPU to start executing from RRAM."]
 pub type ReadW<'a, REG> = crate::BitWriter<'a, REG, Read>;
 impl<'a, REG> ReadW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
 {
-    #[doc = "Reading from the region is not allowed"]
+    #[doc = "Reading from the region is not allowed."]
     #[inline(always)]
     pub fn not_allowed(self) -> &'a mut crate::W<REG> {
         self.variant(Read::NotAllowed)
@@ -325,7 +325,7 @@ pub type SizeR = crate::FieldReader;
 #[doc = "Field `SIZE` writer - Immutable boot region size"]
 pub type SizeW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 impl R {
-    #[doc = "Bit 0 - Read access"]
+    #[doc = "Bit 0 - Read access. Must be enabled in order for the Arm Cortex CPU to start executing from RRAM."]
     #[inline(always)]
     pub fn read(&self) -> ReadR {
         ReadR::new((self.bits & 1) != 0)
@@ -362,7 +362,7 @@ impl R {
     }
 }
 impl W {
-    #[doc = "Bit 0 - Read access"]
+    #[doc = "Bit 0 - Read access. Must be enabled in order for the Arm Cortex CPU to start executing from RRAM."]
     #[inline(always)]
     pub fn read(&mut self) -> ReadW<'_, BootconfSpec> {
         ReadW::new(self, 0)

@@ -6,8 +6,8 @@ pub type W = crate::W<Protect1Spec>;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u32)]
 pub enum Pall {
-    #[doc = "4294967295: The device canbe erased using the CTRL-AP Erase all function and TAMPC PROTECT.ERASEPROTECT signal protector is unlocked."]
-    Unprotected = 4294967295,
+    #[doc = "1358582010: Erase protection is enabled and the signal protector is locked."]
+    Protected = 1358582010,
 }
 impl From<Pall> for u32 {
     #[inline(always)]
@@ -26,14 +26,14 @@ impl PallR {
     #[inline(always)]
     pub const fn variant(&self) -> Option<Pall> {
         match self.bits {
-            4294967295 => Some(Pall::Unprotected),
+            1358582010 => Some(Pall::Protected),
             _ => None,
         }
     }
-    #[doc = "The device canbe erased using the CTRL-AP Erase all function and TAMPC PROTECT.ERASEPROTECT signal protector is unlocked."]
+    #[doc = "Erase protection is enabled and the signal protector is locked."]
     #[inline(always)]
-    pub fn is_unprotected(&self) -> bool {
-        *self == Pall::Unprotected
+    pub fn is_protected(&self) -> bool {
+        *self == Pall::Protected
     }
 }
 #[doc = "Field `PALL` writer - "]
@@ -43,10 +43,10 @@ where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u32>,
 {
-    #[doc = "The device canbe erased using the CTRL-AP Erase all function and TAMPC PROTECT.ERASEPROTECT signal protector is unlocked."]
+    #[doc = "Erase protection is enabled and the signal protector is locked."]
     #[inline(always)]
-    pub fn unprotected(self) -> &'a mut crate::W<REG> {
-        self.variant(Pall::Unprotected)
+    pub fn protected(self) -> &'a mut crate::W<REG> {
+        self.variant(Pall::Protected)
     }
 }
 impl R {

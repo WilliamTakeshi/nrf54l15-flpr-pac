@@ -1,5 +1,5 @@
 #[repr(C)]
-#[doc = "Unspecified"]
+#[doc = "RRAMC can apply access privileges to regions of the RRAM. Some regions are dedicated for system use and are not available for configuration - refer to the instantiation table for details."]
 #[doc(alias = "REGION")]
 pub struct Region {
     address: Address,

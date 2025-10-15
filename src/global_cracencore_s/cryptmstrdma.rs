@@ -20,42 +20,42 @@ pub struct Cryptmstrdma {
     status: Status,
 }
 impl Cryptmstrdma {
-    #[doc = "0x00 - Fetch Address Least Significant Bit"]
+    #[doc = "0x00 - Fetch Address Least Significant Word"]
     #[inline(always)]
     pub const fn fetchaddrlsb(&self) -> &Fetchaddrlsb {
         &self.fetchaddrlsb
     }
-    #[doc = "0x04 - Fetch Address Most Significant Bit"]
+    #[doc = "0x04 - Fetch Address Most Significant Word"]
     #[inline(always)]
     pub const fn fetchaddrmsb(&self) -> &Fetchaddrmsb {
         &self.fetchaddrmsb
     }
-    #[doc = "0x08 - Fetch Length"]
+    #[doc = "0x08 - Fetch DMA Length (only used in direct mode)"]
     #[inline(always)]
     pub const fn fetchlen(&self) -> &Fetchlen {
         &self.fetchlen
     }
-    #[doc = "0x0c - Fetch Tag"]
+    #[doc = "0x0c - Fetch User Tag (only used in direct mode)"]
     #[inline(always)]
     pub const fn fetchtag(&self) -> &Fetchtag {
         &self.fetchtag
     }
-    #[doc = "0x10 - Push Address Least Significant Bit"]
+    #[doc = "0x10 - Push Address Least Significant Word"]
     #[inline(always)]
     pub const fn pushaddrlsb(&self) -> &Pushaddrlsb {
         &self.pushaddrlsb
     }
-    #[doc = "0x14 - Push Address Most Significant Bit"]
+    #[doc = "0x14 - Push Address Most Significant Word"]
     #[inline(always)]
     pub const fn pushaddrmsb(&self) -> &Pushaddrmsb {
         &self.pushaddrmsb
     }
-    #[doc = "0x18 - Push Length"]
+    #[doc = "0x18 - Push Length (only used in direct mode)"]
     #[inline(always)]
     pub const fn pushlen(&self) -> &Pushlen {
         &self.pushlen
     }
-    #[doc = "0x1c - Interrupt Enable"]
+    #[doc = "0x1c - Interrupt Enable mask"]
     #[inline(always)]
     pub const fn inten(&self) -> &Inten {
         &self.inten
@@ -85,7 +85,7 @@ impl Cryptmstrdma {
     pub const fn intstatclr(&self) -> &Intstatclr {
         &self.intstatclr
     }
-    #[doc = "0x34 - Configuration"]
+    #[doc = "0x34 - Cryptomaster configuration"]
     #[inline(always)]
     pub const fn config(&self) -> &Config {
         &self.config
@@ -101,45 +101,45 @@ impl Cryptmstrdma {
         &self.status
     }
 }
-#[doc = "FETCHADDRLSB (rw) register accessor: Fetch Address Least Significant Bit\n\nYou can [`read`](crate::Reg::read) this register and get [`fetchaddrlsb::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fetchaddrlsb::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@fetchaddrlsb`] module"]
+#[doc = "FETCHADDRLSB (rw) register accessor: Fetch Address Least Significant Word\n\nYou can [`read`](crate::Reg::read) this register and get [`fetchaddrlsb::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fetchaddrlsb::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@fetchaddrlsb`] module"]
 #[doc(alias = "FETCHADDRLSB")]
 pub type Fetchaddrlsb = crate::Reg<fetchaddrlsb::FetchaddrlsbSpec>;
-#[doc = "Fetch Address Least Significant Bit"]
+#[doc = "Fetch Address Least Significant Word"]
 pub mod fetchaddrlsb;
-#[doc = "FETCHADDRMSB (rw) register accessor: Fetch Address Most Significant Bit\n\nYou can [`read`](crate::Reg::read) this register and get [`fetchaddrmsb::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fetchaddrmsb::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@fetchaddrmsb`] module"]
+#[doc = "FETCHADDRMSB (rw) register accessor: Fetch Address Most Significant Word\n\nYou can [`read`](crate::Reg::read) this register and get [`fetchaddrmsb::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fetchaddrmsb::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@fetchaddrmsb`] module"]
 #[doc(alias = "FETCHADDRMSB")]
 pub type Fetchaddrmsb = crate::Reg<fetchaddrmsb::FetchaddrmsbSpec>;
-#[doc = "Fetch Address Most Significant Bit"]
+#[doc = "Fetch Address Most Significant Word"]
 pub mod fetchaddrmsb;
-#[doc = "FETCHLEN (rw) register accessor: Fetch Length\n\nYou can [`read`](crate::Reg::read) this register and get [`fetchlen::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fetchlen::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@fetchlen`] module"]
+#[doc = "FETCHLEN (rw) register accessor: Fetch DMA Length (only used in direct mode)\n\nYou can [`read`](crate::Reg::read) this register and get [`fetchlen::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fetchlen::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@fetchlen`] module"]
 #[doc(alias = "FETCHLEN")]
 pub type Fetchlen = crate::Reg<fetchlen::FetchlenSpec>;
-#[doc = "Fetch Length"]
+#[doc = "Fetch DMA Length (only used in direct mode)"]
 pub mod fetchlen;
-#[doc = "FETCHTAG (rw) register accessor: Fetch Tag\n\nYou can [`read`](crate::Reg::read) this register and get [`fetchtag::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fetchtag::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@fetchtag`] module"]
+#[doc = "FETCHTAG (rw) register accessor: Fetch User Tag (only used in direct mode)\n\nYou can [`read`](crate::Reg::read) this register and get [`fetchtag::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fetchtag::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@fetchtag`] module"]
 #[doc(alias = "FETCHTAG")]
 pub type Fetchtag = crate::Reg<fetchtag::FetchtagSpec>;
-#[doc = "Fetch Tag"]
+#[doc = "Fetch User Tag (only used in direct mode)"]
 pub mod fetchtag;
-#[doc = "PUSHADDRLSB (rw) register accessor: Push Address Least Significant Bit\n\nYou can [`read`](crate::Reg::read) this register and get [`pushaddrlsb::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pushaddrlsb::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@pushaddrlsb`] module"]
+#[doc = "PUSHADDRLSB (rw) register accessor: Push Address Least Significant Word\n\nYou can [`read`](crate::Reg::read) this register and get [`pushaddrlsb::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pushaddrlsb::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@pushaddrlsb`] module"]
 #[doc(alias = "PUSHADDRLSB")]
 pub type Pushaddrlsb = crate::Reg<pushaddrlsb::PushaddrlsbSpec>;
-#[doc = "Push Address Least Significant Bit"]
+#[doc = "Push Address Least Significant Word"]
 pub mod pushaddrlsb;
-#[doc = "PUSHADDRMSB (rw) register accessor: Push Address Most Significant Bit\n\nYou can [`read`](crate::Reg::read) this register and get [`pushaddrmsb::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pushaddrmsb::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@pushaddrmsb`] module"]
+#[doc = "PUSHADDRMSB (rw) register accessor: Push Address Most Significant Word\n\nYou can [`read`](crate::Reg::read) this register and get [`pushaddrmsb::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pushaddrmsb::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@pushaddrmsb`] module"]
 #[doc(alias = "PUSHADDRMSB")]
 pub type Pushaddrmsb = crate::Reg<pushaddrmsb::PushaddrmsbSpec>;
-#[doc = "Push Address Most Significant Bit"]
+#[doc = "Push Address Most Significant Word"]
 pub mod pushaddrmsb;
-#[doc = "PUSHLEN (rw) register accessor: Push Length\n\nYou can [`read`](crate::Reg::read) this register and get [`pushlen::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pushlen::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@pushlen`] module"]
+#[doc = "PUSHLEN (rw) register accessor: Push Length (only used in direct mode)\n\nYou can [`read`](crate::Reg::read) this register and get [`pushlen::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pushlen::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@pushlen`] module"]
 #[doc(alias = "PUSHLEN")]
 pub type Pushlen = crate::Reg<pushlen::PushlenSpec>;
-#[doc = "Push Length"]
+#[doc = "Push Length (only used in direct mode)"]
 pub mod pushlen;
-#[doc = "INTEN (rw) register accessor: Interrupt Enable\n\nYou can [`read`](crate::Reg::read) this register and get [`inten::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`inten::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@inten`] module"]
+#[doc = "INTEN (rw) register accessor: Interrupt Enable mask\n\nYou can [`read`](crate::Reg::read) this register and get [`inten::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`inten::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@inten`] module"]
 #[doc(alias = "INTEN")]
 pub type Inten = crate::Reg<inten::IntenSpec>;
-#[doc = "Interrupt Enable"]
+#[doc = "Interrupt Enable mask"]
 pub mod inten;
 #[doc = "INTENSET (rw) register accessor: Interrupt Set\n\nYou can [`read`](crate::Reg::read) this register and get [`intenset::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`intenset::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@intenset`] module"]
 #[doc(alias = "INTENSET")]
@@ -166,10 +166,10 @@ pub mod intstat;
 pub type Intstatclr = crate::Reg<intstatclr::IntstatclrSpec>;
 #[doc = "Interrupt Status Clear"]
 pub mod intstatclr;
-#[doc = "CONFIG (rw) register accessor: Configuration\n\nYou can [`read`](crate::Reg::read) this register and get [`config::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`config::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@config`] module"]
+#[doc = "CONFIG (rw) register accessor: Cryptomaster configuration\n\nYou can [`read`](crate::Reg::read) this register and get [`config::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`config::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@config`] module"]
 #[doc(alias = "CONFIG")]
 pub type Config = crate::Reg<config::ConfigSpec>;
-#[doc = "Configuration"]
+#[doc = "Cryptomaster configuration"]
 pub mod config;
 #[doc = "START (rw) register accessor: Start\n\nYou can [`read`](crate::Reg::read) this register and get [`start::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`start::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@start`] module"]
 #[doc(alias = "START")]

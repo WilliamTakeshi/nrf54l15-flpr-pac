@@ -196,7 +196,7 @@ where
 #[doc = "Reference control\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Refsel {
-    #[doc = "0: Internal reference (1.024 V)"]
+    #[doc = "0: Internal reference (0.9 V)"]
     Internal = 0,
     #[doc = "1: External reference given at PADC_EXT_REF_1V2"]
     External = 1,
@@ -218,7 +218,7 @@ impl RefselR {
             true => Refsel::External,
         }
     }
-    #[doc = "Internal reference (1.024 V)"]
+    #[doc = "Internal reference (0.9 V)"]
     #[inline(always)]
     pub fn is_internal(&self) -> bool {
         *self == Refsel::Internal
@@ -235,7 +235,7 @@ impl<'a, REG> RefselW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
 {
-    #[doc = "Internal reference (1.024 V)"]
+    #[doc = "Internal reference (0.9 V)"]
     #[inline(always)]
     pub fn internal(self) -> &'a mut crate::W<REG> {
         self.variant(Refsel::Internal)

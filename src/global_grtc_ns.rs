@@ -16,11 +16,17 @@ pub struct RegisterBlock {
     events_rtcomparesync: EventsRtcomparesync,
     _reserved9: [u8; 0x04],
     events_pwmperiodend: EventsPwmperiodend,
-    _reserved10: [u8; 0x10],
+    _reserved10: [u8; 0x04],
+    events_pwmready: EventsPwmready,
+    events_clkoutready: EventsClkoutready,
+    _reserved12: [u8; 0x04],
     publish_compare: [PublishCompare; 12],
-    _reserved11: [u8; 0x50],
+    _reserved13: [u8; 0x44],
+    publish_pwmready: PublishPwmready,
+    publish_clkoutready: PublishClkoutready,
+    _reserved15: [u8; 0x04],
     shorts: Shorts,
-    _reserved12: [u8; 0xfc],
+    _reserved16: [u8; 0xfc],
     inten0: Inten0,
     intenset0: Intenset0,
     intenclr0: Intenclr0,
@@ -37,23 +43,24 @@ pub struct RegisterBlock {
     intenset3: Intenset3,
     intenclr3: Intenclr3,
     intpend3: Intpend3,
-    _reserved28: [u8; 0xc0],
+    _reserved32: [u8; 0xc0],
     evten: Evten,
     evtenset: Evtenset,
     evtenclr: Evtenclr,
-    _reserved31: [u8; 0x0104],
+    _reserved35: [u8; 0x0104],
     mode: Mode,
-    _reserved32: [u8; 0x0c],
+    _reserved36: [u8; 0x0c],
     cc: [Cc; 12],
-    _reserved33: [u8; 0xc4],
+    _reserved37: [u8; 0xc4],
     timeout: Timeout,
     interval: Interval,
     waketime: Waketime,
-    _reserved36: [u8; 0x60],
+    status: Status,
+    _reserved41: [u8; 0x54],
     pwmconfig: Pwmconfig,
     clkout: Clkout,
     clkcfg: Clkcfg,
-    _reserved39: [u8; 0x04],
+    _reserved44: [u8; 0x04],
     syscounter: (),
 }
 impl RegisterBlock {
@@ -125,6 +132,16 @@ impl RegisterBlock {
     pub const fn events_pwmperiodend(&self) -> &EventsPwmperiodend {
         &self.events_pwmperiodend
     }
+    #[doc = "0x174 - Event on STATUS.PWM.READY status changed to ready"]
+    #[inline(always)]
+    pub const fn events_pwmready(&self) -> &EventsPwmready {
+        &self.events_pwmready
+    }
+    #[doc = "0x178 - Event on STATUS.CLKOUT.READY status changed to ready"]
+    #[inline(always)]
+    pub const fn events_clkoutready(&self) -> &EventsClkoutready {
+        &self.events_clkoutready
+    }
     #[doc = "0x180..0x1b0 - Description collection: Publish configuration for event COMPARE\\[n\\]"]
     #[inline(always)]
     pub const fn publish_compare(&self, n: usize) -> &PublishCompare {
@@ -135,6 +152,16 @@ impl RegisterBlock {
     #[inline(always)]
     pub fn publish_compare_iter(&self) -> impl Iterator<Item = &PublishCompare> {
         self.publish_compare.iter()
+    }
+    #[doc = "0x1f4 - Publish configuration for event PWMREADY"]
+    #[inline(always)]
+    pub const fn publish_pwmready(&self) -> &PublishPwmready {
+        &self.publish_pwmready
+    }
+    #[doc = "0x1f8 - Publish configuration for event CLKOUTREADY"]
+    #[inline(always)]
+    pub const fn publish_clkoutready(&self) -> &PublishClkoutready {
+        &self.publish_clkoutready
     }
     #[doc = "0x200 - Shortcuts between local events and tasks"]
     #[inline(always)]
@@ -267,6 +294,11 @@ impl RegisterBlock {
     pub const fn waketime(&self) -> &Waketime {
         &self.waketime
     }
+    #[doc = "0x6b0..0x6bc - Unspecified"]
+    #[inline(always)]
+    pub const fn status(&self) -> &Status {
+        &self.status
+    }
     #[doc = "0x710 - PWM configuration."]
     #[inline(always)]
     pub const fn pwmconfig(&self) -> &Pwmconfig {
@@ -358,11 +390,31 @@ pub mod events_rtcomparesync;
 pub type EventsPwmperiodend = crate::Reg<events_pwmperiodend::EventsPwmperiodendSpec>;
 #[doc = "Event on end of each PWM period"]
 pub mod events_pwmperiodend;
+#[doc = "EVENTS_PWMREADY (rw) register accessor: Event on STATUS.PWM.READY status changed to ready\n\nYou can [`read`](crate::Reg::read) this register and get [`events_pwmready::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_pwmready::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@events_pwmready`] module"]
+#[doc(alias = "EVENTS_PWMREADY")]
+pub type EventsPwmready = crate::Reg<events_pwmready::EventsPwmreadySpec>;
+#[doc = "Event on STATUS.PWM.READY status changed to ready"]
+pub mod events_pwmready;
+#[doc = "EVENTS_CLKOUTREADY (rw) register accessor: Event on STATUS.CLKOUT.READY status changed to ready\n\nYou can [`read`](crate::Reg::read) this register and get [`events_clkoutready::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_clkoutready::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@events_clkoutready`] module"]
+#[doc(alias = "EVENTS_CLKOUTREADY")]
+pub type EventsClkoutready = crate::Reg<events_clkoutready::EventsClkoutreadySpec>;
+#[doc = "Event on STATUS.CLKOUT.READY status changed to ready"]
+pub mod events_clkoutready;
 #[doc = "PUBLISH_COMPARE (rw) register accessor: Description collection: Publish configuration for event COMPARE\\[n\\]\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_compare::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_compare::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_compare`] module"]
 #[doc(alias = "PUBLISH_COMPARE")]
 pub type PublishCompare = crate::Reg<publish_compare::PublishCompareSpec>;
 #[doc = "Description collection: Publish configuration for event COMPARE\\[n\\]"]
 pub mod publish_compare;
+#[doc = "PUBLISH_PWMREADY (rw) register accessor: Publish configuration for event PWMREADY\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_pwmready::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_pwmready::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_pwmready`] module"]
+#[doc(alias = "PUBLISH_PWMREADY")]
+pub type PublishPwmready = crate::Reg<publish_pwmready::PublishPwmreadySpec>;
+#[doc = "Publish configuration for event PWMREADY"]
+pub mod publish_pwmready;
+#[doc = "PUBLISH_CLKOUTREADY (rw) register accessor: Publish configuration for event CLKOUTREADY\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_clkoutready::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_clkoutready::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_clkoutready`] module"]
+#[doc(alias = "PUBLISH_CLKOUTREADY")]
+pub type PublishClkoutready = crate::Reg<publish_clkoutready::PublishClkoutreadySpec>;
+#[doc = "Publish configuration for event CLKOUTREADY"]
+pub mod publish_clkoutready;
 #[doc = "SHORTS (rw) register accessor: Shortcuts between local events and tasks\n\nYou can [`read`](crate::Reg::read) this register and get [`shorts::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`shorts::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@shorts`] module"]
 #[doc(alias = "SHORTS")]
 pub type Shorts = crate::Reg<shorts::ShortsSpec>;
@@ -488,6 +540,11 @@ pub mod interval;
 pub type Waketime = crate::Reg<waketime::WaketimeSpec>;
 #[doc = "GRTC wake up time."]
 pub mod waketime;
+#[doc = "Unspecified"]
+pub use self::status::Status;
+#[doc = r"Cluster"]
+#[doc = "Unspecified"]
+pub mod status;
 #[doc = "PWMCONFIG (rw) register accessor: PWM configuration.\n\nYou can [`read`](crate::Reg::read) this register and get [`pwmconfig::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pwmconfig::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@pwmconfig`] module"]
 #[doc(alias = "PWMCONFIG")]
 pub type Pwmconfig = crate::Reg<pwmconfig::PwmconfigSpec>;

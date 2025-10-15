@@ -2,17 +2,17 @@
 pub type R = crate::R<StartSpec>;
 #[doc = "Register `START` writer"]
 pub type W = crate::W<StartSpec>;
-#[doc = "Field `STARTFETCH` writer - "]
+#[doc = "Field `STARTFETCH` writer - Writing a '1' starts the fetcher DMA. Writing a '0' has no effect."]
 pub type StartfetchW<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `STARTPUSH` writer - "]
+#[doc = "Field `STARTPUSH` writer - Writing a '1' starts the pusher DMA. Writing a '0' has no effect."]
 pub type StartpushW<'a, REG> = crate::BitWriter<'a, REG>;
 impl W {
-    #[doc = "Bit 0"]
+    #[doc = "Bit 0 - Writing a '1' starts the fetcher DMA. Writing a '0' has no effect."]
     #[inline(always)]
     pub fn startfetch(&mut self) -> StartfetchW<'_, StartSpec> {
         StartfetchW::new(self, 0)
     }
-    #[doc = "Bit 1"]
+    #[doc = "Bit 1 - Writing a '1' starts the pusher DMA. Writing a '0' has no effect."]
     #[inline(always)]
     pub fn startpush(&mut self) -> StartpushW<'_, StartSpec> {
         StartpushW::new(self, 1)

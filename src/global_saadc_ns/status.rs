@@ -5,7 +5,7 @@ pub type R = crate::R<StatusSpec>;
 pub enum Status {
     #[doc = "0: ADC is ready. No on-going conversion."]
     Ready = 0,
-    #[doc = "1: ADC is busy. Single conversion in progress."]
+    #[doc = "1: ADC is busy. Conversion is in progress."]
     Busy = 1,
 }
 impl From<Status> for bool {
@@ -30,7 +30,7 @@ impl StatusR {
     pub fn is_ready(&self) -> bool {
         *self == Status::Ready
     }
-    #[doc = "ADC is busy. Single conversion in progress."]
+    #[doc = "ADC is busy. Conversion is in progress."]
     #[inline(always)]
     pub fn is_busy(&self) -> bool {
         *self == Status::Busy

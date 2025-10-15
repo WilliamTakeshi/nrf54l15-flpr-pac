@@ -18,9 +18,7 @@ pub struct RegisterBlock {
     subscribe_lfclkstart: SubscribeLfclkstart,
     subscribe_lfclkstop: SubscribeLfclkstop,
     subscribe_cal: SubscribeCal,
-    subscribe_xotune: SubscribeXotune,
-    subscribe_xotuneabort: SubscribeXotuneabort,
-    _reserved18: [u8; 0x5c],
+    _reserved16: [u8; 0x64],
     events_xostarted: EventsXostarted,
     events_pllstarted: EventsPllstarted,
     events_lfclkstarted: EventsLfclkstarted,
@@ -28,26 +26,16 @@ pub struct RegisterBlock {
     events_xotuned: EventsXotuned,
     events_xotuneerror: EventsXotuneerror,
     events_xotunefailed: EventsXotunefailed,
-    _reserved25: [u8; 0x64],
-    publish_xostarted: PublishXostarted,
-    publish_pllstarted: PublishPllstarted,
-    publish_lfclkstarted: PublishLfclkstarted,
-    publish_done: PublishDone,
-    publish_xotuned: PublishXotuned,
-    publish_xotuneerror: PublishXotuneerror,
-    publish_xotunefailed: PublishXotunefailed,
-    _reserved32: [u8; 0x64],
-    shorts: Shorts,
-    _reserved33: [u8; 0xfc],
+    _reserved23: [u8; 0x01e4],
     inten: Inten,
     intenset: Intenset,
     intenclr: Intenclr,
     intpend: Intpend,
-    _reserved37: [u8; 0xf0],
+    _reserved27: [u8; 0xf0],
     xo: Xo,
-    _reserved38: [u8; 0x10],
+    _reserved28: [u8; 0x10],
     pll: Pll,
-    _reserved39: [u8; 0x10],
+    _reserved29: [u8; 0x10],
     lfclk: Lfclk,
 }
 impl RegisterBlock {
@@ -131,16 +119,6 @@ impl RegisterBlock {
     pub const fn subscribe_cal(&self) -> &SubscribeCal {
         &self.subscribe_cal
     }
-    #[doc = "0x9c - Subscribe configuration for task XOTUNE"]
-    #[inline(always)]
-    pub const fn subscribe_xotune(&self) -> &SubscribeXotune {
-        &self.subscribe_xotune
-    }
-    #[doc = "0xa0 - Subscribe configuration for task XOTUNEABORT"]
-    #[inline(always)]
-    pub const fn subscribe_xotuneabort(&self) -> &SubscribeXotuneabort {
-        &self.subscribe_xotuneabort
-    }
     #[doc = "0x100 - Crystal oscillator has started"]
     #[inline(always)]
     pub const fn events_xostarted(&self) -> &EventsXostarted {
@@ -175,46 +153,6 @@ impl RegisterBlock {
     #[inline(always)]
     pub const fn events_xotunefailed(&self) -> &EventsXotunefailed {
         &self.events_xotunefailed
-    }
-    #[doc = "0x180 - Publish configuration for event XOSTARTED"]
-    #[inline(always)]
-    pub const fn publish_xostarted(&self) -> &PublishXostarted {
-        &self.publish_xostarted
-    }
-    #[doc = "0x184 - Publish configuration for event PLLSTARTED"]
-    #[inline(always)]
-    pub const fn publish_pllstarted(&self) -> &PublishPllstarted {
-        &self.publish_pllstarted
-    }
-    #[doc = "0x188 - Publish configuration for event LFCLKSTARTED"]
-    #[inline(always)]
-    pub const fn publish_lfclkstarted(&self) -> &PublishLfclkstarted {
-        &self.publish_lfclkstarted
-    }
-    #[doc = "0x18c - Publish configuration for event DONE"]
-    #[inline(always)]
-    pub const fn publish_done(&self) -> &PublishDone {
-        &self.publish_done
-    }
-    #[doc = "0x190 - Publish configuration for event XOTUNED"]
-    #[inline(always)]
-    pub const fn publish_xotuned(&self) -> &PublishXotuned {
-        &self.publish_xotuned
-    }
-    #[doc = "0x194 - Publish configuration for event XOTUNEERROR"]
-    #[inline(always)]
-    pub const fn publish_xotuneerror(&self) -> &PublishXotuneerror {
-        &self.publish_xotuneerror
-    }
-    #[doc = "0x198 - Publish configuration for event XOTUNEFAILED"]
-    #[inline(always)]
-    pub const fn publish_xotunefailed(&self) -> &PublishXotunefailed {
-        &self.publish_xotunefailed
-    }
-    #[doc = "0x200 - Shortcuts between local events and tasks"]
-    #[inline(always)]
-    pub const fn shorts(&self) -> &Shorts {
-        &self.shorts
     }
     #[doc = "0x300 - Enable or disable interrupt"]
     #[inline(always)]
@@ -332,16 +270,6 @@ pub mod subscribe_lfclkstop;
 pub type SubscribeCal = crate::Reg<subscribe_cal::SubscribeCalSpec>;
 #[doc = "Subscribe configuration for task CAL"]
 pub mod subscribe_cal;
-#[doc = "SUBSCRIBE_XOTUNE (rw) register accessor: Subscribe configuration for task XOTUNE\n\nYou can [`read`](crate::Reg::read) this register and get [`subscribe_xotune::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`subscribe_xotune::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@subscribe_xotune`] module"]
-#[doc(alias = "SUBSCRIBE_XOTUNE")]
-pub type SubscribeXotune = crate::Reg<subscribe_xotune::SubscribeXotuneSpec>;
-#[doc = "Subscribe configuration for task XOTUNE"]
-pub mod subscribe_xotune;
-#[doc = "SUBSCRIBE_XOTUNEABORT (rw) register accessor: Subscribe configuration for task XOTUNEABORT\n\nYou can [`read`](crate::Reg::read) this register and get [`subscribe_xotuneabort::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`subscribe_xotuneabort::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@subscribe_xotuneabort`] module"]
-#[doc(alias = "SUBSCRIBE_XOTUNEABORT")]
-pub type SubscribeXotuneabort = crate::Reg<subscribe_xotuneabort::SubscribeXotuneabortSpec>;
-#[doc = "Subscribe configuration for task XOTUNEABORT"]
-pub mod subscribe_xotuneabort;
 #[doc = "EVENTS_XOSTARTED (rw) register accessor: Crystal oscillator has started\n\nYou can [`read`](crate::Reg::read) this register and get [`events_xostarted::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_xostarted::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@events_xostarted`] module"]
 #[doc(alias = "EVENTS_XOSTARTED")]
 pub type EventsXostarted = crate::Reg<events_xostarted::EventsXostartedSpec>;
@@ -377,46 +305,6 @@ pub mod events_xotuneerror;
 pub type EventsXotunefailed = crate::Reg<events_xotunefailed::EventsXotunefailedSpec>;
 #[doc = "HFXO tuning could not be completed"]
 pub mod events_xotunefailed;
-#[doc = "PUBLISH_XOSTARTED (rw) register accessor: Publish configuration for event XOSTARTED\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_xostarted::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_xostarted::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_xostarted`] module"]
-#[doc(alias = "PUBLISH_XOSTARTED")]
-pub type PublishXostarted = crate::Reg<publish_xostarted::PublishXostartedSpec>;
-#[doc = "Publish configuration for event XOSTARTED"]
-pub mod publish_xostarted;
-#[doc = "PUBLISH_PLLSTARTED (rw) register accessor: Publish configuration for event PLLSTARTED\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_pllstarted::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_pllstarted::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_pllstarted`] module"]
-#[doc(alias = "PUBLISH_PLLSTARTED")]
-pub type PublishPllstarted = crate::Reg<publish_pllstarted::PublishPllstartedSpec>;
-#[doc = "Publish configuration for event PLLSTARTED"]
-pub mod publish_pllstarted;
-#[doc = "PUBLISH_LFCLKSTARTED (rw) register accessor: Publish configuration for event LFCLKSTARTED\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_lfclkstarted::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_lfclkstarted::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_lfclkstarted`] module"]
-#[doc(alias = "PUBLISH_LFCLKSTARTED")]
-pub type PublishLfclkstarted = crate::Reg<publish_lfclkstarted::PublishLfclkstartedSpec>;
-#[doc = "Publish configuration for event LFCLKSTARTED"]
-pub mod publish_lfclkstarted;
-#[doc = "PUBLISH_DONE (rw) register accessor: Publish configuration for event DONE\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_done::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_done::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_done`] module"]
-#[doc(alias = "PUBLISH_DONE")]
-pub type PublishDone = crate::Reg<publish_done::PublishDoneSpec>;
-#[doc = "Publish configuration for event DONE"]
-pub mod publish_done;
-#[doc = "PUBLISH_XOTUNED (rw) register accessor: Publish configuration for event XOTUNED\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_xotuned::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_xotuned::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_xotuned`] module"]
-#[doc(alias = "PUBLISH_XOTUNED")]
-pub type PublishXotuned = crate::Reg<publish_xotuned::PublishXotunedSpec>;
-#[doc = "Publish configuration for event XOTUNED"]
-pub mod publish_xotuned;
-#[doc = "PUBLISH_XOTUNEERROR (rw) register accessor: Publish configuration for event XOTUNEERROR\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_xotuneerror::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_xotuneerror::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_xotuneerror`] module"]
-#[doc(alias = "PUBLISH_XOTUNEERROR")]
-pub type PublishXotuneerror = crate::Reg<publish_xotuneerror::PublishXotuneerrorSpec>;
-#[doc = "Publish configuration for event XOTUNEERROR"]
-pub mod publish_xotuneerror;
-#[doc = "PUBLISH_XOTUNEFAILED (rw) register accessor: Publish configuration for event XOTUNEFAILED\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_xotunefailed::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_xotunefailed::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_xotunefailed`] module"]
-#[doc(alias = "PUBLISH_XOTUNEFAILED")]
-pub type PublishXotunefailed = crate::Reg<publish_xotunefailed::PublishXotunefailedSpec>;
-#[doc = "Publish configuration for event XOTUNEFAILED"]
-pub mod publish_xotunefailed;
-#[doc = "SHORTS (rw) register accessor: Shortcuts between local events and tasks\n\nYou can [`read`](crate::Reg::read) this register and get [`shorts::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`shorts::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@shorts`] module"]
-#[doc(alias = "SHORTS")]
-pub type Shorts = crate::Reg<shorts::ShortsSpec>;
-#[doc = "Shortcuts between local events and tasks"]
-pub mod shorts;
 #[doc = "INTEN (rw) register accessor: Enable or disable interrupt\n\nYou can [`read`](crate::Reg::read) this register and get [`inten::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`inten::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@inten`] module"]
 #[doc(alias = "INTEN")]
 pub type Inten = crate::Reg<inten::IntenSpec>;

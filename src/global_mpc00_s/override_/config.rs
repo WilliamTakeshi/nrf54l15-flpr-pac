@@ -2,10 +2,6 @@
 pub type R = crate::R<ConfigSpec>;
 #[doc = "Register `CONFIG` writer"]
 pub type W = crate::W<ConfigSpec>;
-#[doc = "Field `SLAVENUMBER` reader - Target slave number for override region n accesses. Slave number 0 is reserved for default slave"]
-pub type SlavenumberR = crate::FieldReader;
-#[doc = "Field `SLAVENUMBER` writer - Target slave number for override region n accesses. Slave number 0 is reserved for default slave"]
-pub type SlavenumberW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 #[doc = "Lock Override region n\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Lock {
@@ -112,48 +108,7 @@ where
         self.variant(Enable::Enabled)
     }
 }
-#[doc = "Secure mask enable for Override region n\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub enum Securemask {
-    #[doc = "0: Mask is disabled for override region n"]
-    Disabled = 0,
-    #[doc = "1: Mask is enabled for override region n"]
-    Enabled = 1,
-}
-impl From<Securemask> for bool {
-    #[inline(always)]
-    fn from(variant: Securemask) -> Self {
-        variant as u8 != 0
-    }
-}
-#[doc = "Field `SECUREMASK` reader - Secure mask enable for Override region n"]
-pub type SecuremaskR = crate::BitReader<Securemask>;
-impl SecuremaskR {
-    #[doc = "Get enumerated values variant"]
-    #[inline(always)]
-    pub const fn variant(&self) -> Securemask {
-        match self.bits {
-            false => Securemask::Disabled,
-            true => Securemask::Enabled,
-        }
-    }
-    #[doc = "Mask is disabled for override region n"]
-    #[inline(always)]
-    pub fn is_disabled(&self) -> bool {
-        *self == Securemask::Disabled
-    }
-    #[doc = "Mask is enabled for override region n"]
-    #[inline(always)]
-    pub fn is_enabled(&self) -> bool {
-        *self == Securemask::Enabled
-    }
-}
 impl R {
-    #[doc = "Bits 0:4 - Target slave number for override region n accesses. Slave number 0 is reserved for default slave"]
-    #[inline(always)]
-    pub fn slavenumber(&self) -> SlavenumberR {
-        SlavenumberR::new((self.bits & 0x1f) as u8)
-    }
     #[doc = "Bit 8 - Lock Override region n"]
     #[inline(always)]
     pub fn lock(&self) -> LockR {
@@ -164,18 +119,8 @@ impl R {
     pub fn enable(&self) -> EnableR {
         EnableR::new(((self.bits >> 9) & 1) != 0)
     }
-    #[doc = "Bit 12 - Secure mask enable for Override region n"]
-    #[inline(always)]
-    pub fn securemask(&self) -> SecuremaskR {
-        SecuremaskR::new(((self.bits >> 12) & 1) != 0)
-    }
 }
 impl W {
-    #[doc = "Bits 0:4 - Target slave number for override region n accesses. Slave number 0 is reserved for default slave"]
-    #[inline(always)]
-    pub fn slavenumber(&mut self) -> SlavenumberW<'_, ConfigSpec> {
-        SlavenumberW::new(self, 0)
-    }
     #[doc = "Bit 8 - Lock Override region n"]
     #[inline(always)]
     pub fn lock(&mut self) -> LockW<'_, ConfigSpec> {

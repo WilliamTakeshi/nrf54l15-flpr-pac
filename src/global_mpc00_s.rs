@@ -9,12 +9,8 @@ pub struct RegisterBlock {
     intenclr: Intenclr,
     _reserved4: [u8; 0xf4],
     memaccerr: Memaccerr,
-    _reserved5: [u8; 0x08],
-    globalslave: Globalslave,
-    _reserved6: [u8; 0x01e8],
-    region: [Region; 8],
-    _reserved7: [u8; 0x0180],
-    override_: [Override; 7],
+    _reserved5: [u8; 0x03f8],
+    override_: (),
 }
 impl RegisterBlock {
     #[doc = "0x100 - Memory Access Error event"]
@@ -42,32 +38,30 @@ impl RegisterBlock {
     pub const fn memaccerr(&self) -> &Memaccerr {
         &self.memaccerr
     }
-    #[doc = "0x410..0x418 - Global slave master port connection information"]
-    #[inline(always)]
-    pub const fn globalslave(&self) -> &Globalslave {
-        &self.globalslave
-    }
-    #[doc = "0x600..0x680 - Memory region to slave decoding table"]
-    #[inline(always)]
-    pub const fn region(&self, n: usize) -> &Region {
-        &self.region[n]
-    }
-    #[doc = "Iterator for array of:"]
-    #[doc = "0x600..0x680 - Memory region to slave decoding table"]
-    #[inline(always)]
-    pub fn region_iter(&self) -> impl Iterator<Item = &Region> {
-        self.region.iter()
-    }
-    #[doc = "0x800..0x8e0 - Special privilege tables"]
+    #[doc = "0x800..0x8a8 - Special privilege tables"]
     #[inline(always)]
     pub const fn override_(&self, n: usize) -> &Override {
-        &self.override_[n]
+        #[allow(clippy::no_effect)]
+        [(); 7][n];
+        unsafe {
+            &*core::ptr::from_ref(self)
+                .cast::<u8>()
+                .add(2048)
+                .add(32 * n)
+                .cast()
+        }
     }
     #[doc = "Iterator for array of:"]
-    #[doc = "0x800..0x8e0 - Special privilege tables"]
+    #[doc = "0x800..0x8a8 - Special privilege tables"]
     #[inline(always)]
     pub fn override__iter(&self) -> impl Iterator<Item = &Override> {
-        self.override_.iter()
+        (0..7).map(move |n| unsafe {
+            &*core::ptr::from_ref(self)
+                .cast::<u8>()
+                .add(2048)
+                .add(32 * n)
+                .cast()
+        })
     }
 }
 #[doc = "EVENTS_MEMACCERR (rw) register accessor: Memory Access Error event\n\nYou can [`read`](crate::Reg::read) this register and get [`events_memaccerr::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_memaccerr::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@events_memaccerr`] module"]
@@ -95,16 +89,6 @@ pub use self::memaccerr::Memaccerr;
 #[doc = r"Cluster"]
 #[doc = "Memory Access Error status registers"]
 pub mod memaccerr;
-#[doc = "Global slave master port connection information"]
-pub use self::globalslave::Globalslave;
-#[doc = r"Cluster"]
-#[doc = "Global slave master port connection information"]
-pub mod globalslave;
-#[doc = "Memory region to slave decoding table"]
-pub use self::region::Region;
-#[doc = r"Cluster"]
-#[doc = "Memory region to slave decoding table"]
-pub mod region;
 #[doc = "Special privilege tables"]
 pub use self::override_::Override;
 #[doc = r"Cluster"]

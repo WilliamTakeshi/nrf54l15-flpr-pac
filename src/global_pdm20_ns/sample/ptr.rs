@@ -2,19 +2,19 @@
 pub type R = crate::R<PtrSpec>;
 #[doc = "Register `PTR` writer"]
 pub type W = crate::W<PtrSpec>;
-#[doc = "Field `SAMPLEPTR` reader - Address to write PDM samples to over DMA"]
+#[doc = "Field `SAMPLEPTR` reader - Address to write PCM samples to over DMA"]
 pub type SampleptrR = crate::FieldReader<u32>;
-#[doc = "Field `SAMPLEPTR` writer - Address to write PDM samples to over DMA"]
+#[doc = "Field `SAMPLEPTR` writer - Address to write PCM samples to over DMA"]
 pub type SampleptrW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
-    #[doc = "Bits 0:31 - Address to write PDM samples to over DMA"]
+    #[doc = "Bits 0:31 - Address to write PCM samples to over DMA"]
     #[inline(always)]
     pub fn sampleptr(&self) -> SampleptrR {
         SampleptrR::new(self.bits)
     }
 }
 impl W {
-    #[doc = "Bits 0:31 - Address to write PDM samples to over DMA"]
+    #[doc = "Bits 0:31 - Address to write PCM samples to over DMA"]
     #[inline(always)]
     pub fn sampleptr(&mut self) -> SampleptrW<'_, PtrSpec> {
         SampleptrW::new(self, 0)

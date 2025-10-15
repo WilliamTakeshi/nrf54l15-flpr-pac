@@ -61,7 +61,7 @@ where
 pub enum Parity {
     #[doc = "0: Exclude parity bit"]
     Excluded = 0,
-    #[doc = "7: Include even parity bit"]
+    #[doc = "7: Include parity bit"]
     Included = 7,
 }
 impl From<Parity> for u8 {
@@ -91,7 +91,7 @@ impl ParityR {
     pub fn is_excluded(&self) -> bool {
         *self == Parity::Excluded
     }
-    #[doc = "Include even parity bit"]
+    #[doc = "Include parity bit"]
     #[inline(always)]
     pub fn is_included(&self) -> bool {
         *self == Parity::Included
@@ -109,7 +109,7 @@ where
     pub fn excluded(self) -> &'a mut crate::W<REG> {
         self.variant(Parity::Excluded)
     }
-    #[doc = "Include even parity bit"]
+    #[doc = "Include parity bit"]
     #[inline(always)]
     pub fn included(self) -> &'a mut crate::W<REG> {
         self.variant(Parity::Included)
@@ -393,6 +393,10 @@ pub enum Frametimeout {
     Disabled = 0,
     #[doc = "1: Packet timeout is enabled."]
     Enabled = 1,
+    #[doc = "0: Packet timeout is disabled."]
+    Disabled = 0,
+    #[doc = "1: Packet timeout is enabled."]
+    Enabled = 1,
 }
 impl From<Frametimeout> for bool {
     #[inline(always)]
@@ -405,11 +409,24 @@ pub type FrametimeoutR = crate::BitReader<Frametimeout>;
 impl FrametimeoutR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Frametimeout {
+    pub const fn variant(&self) -> Option<Frametimeout> {
         match self.bits {
-            false => Frametimeout::Disabled,
-            true => Frametimeout::Enabled,
+            false => Some(Frametimeout::Disabled),
+            true => Some(Frametimeout::Enabled),
+            false => Some(Frametimeout::Disabled),
+            true => Some(Frametimeout::Enabled),
+            _ => None,
         }
+    }
+    #[doc = "Packet timeout is disabled."]
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        *self == Frametimeout::Disabled
+    }
+    #[doc = "Packet timeout is enabled."]
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        *self == Frametimeout::Enabled
     }
     #[doc = "Packet timeout is disabled."]
     #[inline(always)]
@@ -428,6 +445,16 @@ impl<'a, REG> FrametimeoutW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
 {
+    #[doc = "Packet timeout is disabled."]
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Frametimeout::Disabled)
+    }
+    #[doc = "Packet timeout is enabled."]
+    #[inline(always)]
+    pub fn enabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Frametimeout::Enabled)
+    }
     #[doc = "Packet timeout is disabled."]
     #[inline(always)]
     pub fn disabled(self) -> &'a mut crate::W<REG> {

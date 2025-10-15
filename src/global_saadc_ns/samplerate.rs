@@ -83,7 +83,7 @@ impl W {
         ModeW::new(self, 12)
     }
 }
-#[doc = "Controls normal or continuous sample rate\n\nYou can [`read`](crate::Reg::read) this register and get [`samplerate::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`samplerate::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Configures the sampling rate for either task-triggered or continuous operation using a local timer\n\nYou can [`read`](crate::Reg::read) this register and get [`samplerate::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`samplerate::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct SamplerateSpec;
 impl crate::RegisterSpec for SamplerateSpec {
     type Ux = u32;

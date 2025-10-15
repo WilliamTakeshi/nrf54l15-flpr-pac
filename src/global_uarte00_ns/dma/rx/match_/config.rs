@@ -214,7 +214,7 @@ where
         self.variant(Enable3::Enabled)
     }
 }
-#[doc = "Configure match filter 0 as one-shot or sticky\n\nValue on reset: 0"]
+#[doc = "Configure match filter 0 as one-shot or continous\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Oneshot0 {
     #[doc = "0: Match filter stays enabled until disabled by task"]
@@ -228,7 +228,7 @@ impl From<Oneshot0> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Field `ONESHOT_0` reader - Configure match filter 0 as one-shot or sticky"]
+#[doc = "Field `ONESHOT_0` reader - Configure match filter 0 as one-shot or continous"]
 pub type Oneshot0R = crate::BitReader<Oneshot0>;
 impl Oneshot0R {
     #[doc = "Get enumerated values variant"]
@@ -250,7 +250,7 @@ impl Oneshot0R {
         *self == Oneshot0::Oneshot
     }
 }
-#[doc = "Field `ONESHOT_0` writer - Configure match filter 0 as one-shot or sticky"]
+#[doc = "Field `ONESHOT_0` writer - Configure match filter 0 as one-shot or continous"]
 pub type Oneshot0W<'a, REG> = crate::BitWriter<'a, REG, Oneshot0>;
 impl<'a, REG> Oneshot0W<'a, REG>
 where
@@ -267,7 +267,7 @@ where
         self.variant(Oneshot0::Oneshot)
     }
 }
-#[doc = "Configure match filter 1 as one-shot or sticky\n\nValue on reset: 0"]
+#[doc = "Configure match filter 1 as one-shot or continous\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Oneshot1 {
     #[doc = "0: Match filter stays enabled until disabled by task"]
@@ -281,7 +281,7 @@ impl From<Oneshot1> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Field `ONESHOT_1` reader - Configure match filter 1 as one-shot or sticky"]
+#[doc = "Field `ONESHOT_1` reader - Configure match filter 1 as one-shot or continous"]
 pub type Oneshot1R = crate::BitReader<Oneshot1>;
 impl Oneshot1R {
     #[doc = "Get enumerated values variant"]
@@ -303,7 +303,7 @@ impl Oneshot1R {
         *self == Oneshot1::Oneshot
     }
 }
-#[doc = "Field `ONESHOT_1` writer - Configure match filter 1 as one-shot or sticky"]
+#[doc = "Field `ONESHOT_1` writer - Configure match filter 1 as one-shot or continous"]
 pub type Oneshot1W<'a, REG> = crate::BitWriter<'a, REG, Oneshot1>;
 impl<'a, REG> Oneshot1W<'a, REG>
 where
@@ -320,7 +320,7 @@ where
         self.variant(Oneshot1::Oneshot)
     }
 }
-#[doc = "Configure match filter 2 as one-shot or sticky\n\nValue on reset: 0"]
+#[doc = "Configure match filter 2 as one-shot or continous\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Oneshot2 {
     #[doc = "0: Match filter stays enabled until disabled by task"]
@@ -334,7 +334,7 @@ impl From<Oneshot2> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Field `ONESHOT_2` reader - Configure match filter 2 as one-shot or sticky"]
+#[doc = "Field `ONESHOT_2` reader - Configure match filter 2 as one-shot or continous"]
 pub type Oneshot2R = crate::BitReader<Oneshot2>;
 impl Oneshot2R {
     #[doc = "Get enumerated values variant"]
@@ -356,7 +356,7 @@ impl Oneshot2R {
         *self == Oneshot2::Oneshot
     }
 }
-#[doc = "Field `ONESHOT_2` writer - Configure match filter 2 as one-shot or sticky"]
+#[doc = "Field `ONESHOT_2` writer - Configure match filter 2 as one-shot or continous"]
 pub type Oneshot2W<'a, REG> = crate::BitWriter<'a, REG, Oneshot2>;
 impl<'a, REG> Oneshot2W<'a, REG>
 where
@@ -373,7 +373,7 @@ where
         self.variant(Oneshot2::Oneshot)
     }
 }
-#[doc = "Configure match filter 3 as one-shot or sticky\n\nValue on reset: 0"]
+#[doc = "Configure match filter 3 as one-shot or continous\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Oneshot3 {
     #[doc = "0: Match filter stays enabled until disabled by task"]
@@ -387,7 +387,7 @@ impl From<Oneshot3> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Field `ONESHOT_3` reader - Configure match filter 3 as one-shot or sticky"]
+#[doc = "Field `ONESHOT_3` reader - Configure match filter 3 as one-shot or continous"]
 pub type Oneshot3R = crate::BitReader<Oneshot3>;
 impl Oneshot3R {
     #[doc = "Get enumerated values variant"]
@@ -409,7 +409,7 @@ impl Oneshot3R {
         *self == Oneshot3::Oneshot
     }
 }
-#[doc = "Field `ONESHOT_3` writer - Configure match filter 3 as one-shot or sticky"]
+#[doc = "Field `ONESHOT_3` writer - Configure match filter 3 as one-shot or continous"]
 pub type Oneshot3W<'a, REG> = crate::BitWriter<'a, REG, Oneshot3>;
 impl<'a, REG> Oneshot3W<'a, REG>
 where
@@ -447,22 +447,22 @@ impl R {
     pub fn enable_3(&self) -> Enable3R {
         Enable3R::new(((self.bits >> 3) & 1) != 0)
     }
-    #[doc = "Bit 16 - Configure match filter 0 as one-shot or sticky"]
+    #[doc = "Bit 16 - Configure match filter 0 as one-shot or continous"]
     #[inline(always)]
     pub fn oneshot_0(&self) -> Oneshot0R {
         Oneshot0R::new(((self.bits >> 16) & 1) != 0)
     }
-    #[doc = "Bit 17 - Configure match filter 1 as one-shot or sticky"]
+    #[doc = "Bit 17 - Configure match filter 1 as one-shot or continous"]
     #[inline(always)]
     pub fn oneshot_1(&self) -> Oneshot1R {
         Oneshot1R::new(((self.bits >> 17) & 1) != 0)
     }
-    #[doc = "Bit 18 - Configure match filter 2 as one-shot or sticky"]
+    #[doc = "Bit 18 - Configure match filter 2 as one-shot or continous"]
     #[inline(always)]
     pub fn oneshot_2(&self) -> Oneshot2R {
         Oneshot2R::new(((self.bits >> 18) & 1) != 0)
     }
-    #[doc = "Bit 19 - Configure match filter 3 as one-shot or sticky"]
+    #[doc = "Bit 19 - Configure match filter 3 as one-shot or continous"]
     #[inline(always)]
     pub fn oneshot_3(&self) -> Oneshot3R {
         Oneshot3R::new(((self.bits >> 19) & 1) != 0)
@@ -489,22 +489,22 @@ impl W {
     pub fn enable_3(&mut self) -> Enable3W<'_, ConfigSpec> {
         Enable3W::new(self, 3)
     }
-    #[doc = "Bit 16 - Configure match filter 0 as one-shot or sticky"]
+    #[doc = "Bit 16 - Configure match filter 0 as one-shot or continous"]
     #[inline(always)]
     pub fn oneshot_0(&mut self) -> Oneshot0W<'_, ConfigSpec> {
         Oneshot0W::new(self, 16)
     }
-    #[doc = "Bit 17 - Configure match filter 1 as one-shot or sticky"]
+    #[doc = "Bit 17 - Configure match filter 1 as one-shot or continous"]
     #[inline(always)]
     pub fn oneshot_1(&mut self) -> Oneshot1W<'_, ConfigSpec> {
         Oneshot1W::new(self, 17)
     }
-    #[doc = "Bit 18 - Configure match filter 2 as one-shot or sticky"]
+    #[doc = "Bit 18 - Configure match filter 2 as one-shot or continous"]
     #[inline(always)]
     pub fn oneshot_2(&mut self) -> Oneshot2W<'_, ConfigSpec> {
         Oneshot2W::new(self, 18)
     }
-    #[doc = "Bit 19 - Configure match filter 3 as one-shot or sticky"]
+    #[doc = "Bit 19 - Configure match filter 3 as one-shot or continous"]
     #[inline(always)]
     pub fn oneshot_3(&mut self) -> Oneshot3W<'_, ConfigSpec> {
         Oneshot3W::new(self, 19)

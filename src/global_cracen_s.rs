@@ -59,7 +59,7 @@ impl RegisterBlock {
     pub const fn enable(&self) -> &Enable {
         &self.enable
     }
-    #[doc = "0x404 - Marks the SEED register as valid"]
+    #[doc = "0x404 - Marks the SEED register as valid."]
     #[inline(always)]
     pub const fn seedvalid(&self) -> &Seedvalid {
         &self.seedvalid
@@ -126,10 +126,10 @@ pub mod intpend;
 pub type Enable = crate::Reg<enable::EnableSpec>;
 #[doc = "Enable CRACEN peripheral modules."]
 pub mod enable;
-#[doc = "SEEDVALID (rw) register accessor: Marks the SEED register as valid\n\nYou can [`read`](crate::Reg::read) this register and get [`seedvalid::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`seedvalid::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@seedvalid`] module"]
+#[doc = "SEEDVALID (rw) register accessor: Marks the SEED register as valid.\n\nYou can [`read`](crate::Reg::read) this register and get [`seedvalid::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`seedvalid::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@seedvalid`] module"]
 #[doc(alias = "SEEDVALID")]
 pub type Seedvalid = crate::Reg<seedvalid::SeedvalidSpec>;
-#[doc = "Marks the SEED register as valid"]
+#[doc = "Marks the SEED register as valid."]
 pub mod seedvalid;
 #[doc = "SEED (w) register accessor: Description collection: Seed word \\[n\\] for symmetric and asymmetric key generation. This register is only writable from KMU.\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`seed::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@seed`] module"]
 #[doc(alias = "SEED")]

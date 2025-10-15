@@ -14,12 +14,12 @@ impl Psel {
     pub const fn sck(&self) -> &Sck {
         &self.sck
     }
-    #[doc = "0x04 - Pin select for MOSI signal"]
+    #[doc = "0x04 - Pin select for SDO signal"]
     #[inline(always)]
     pub const fn mosi(&self) -> &Mosi {
         &self.mosi
     }
-    #[doc = "0x08 - Pin select for MISO signal"]
+    #[doc = "0x08 - Pin select for SDI signal"]
     #[inline(always)]
     pub const fn miso(&self) -> &Miso {
         &self.miso
@@ -40,15 +40,15 @@ impl Psel {
 pub type Sck = crate::Reg<sck::SckSpec>;
 #[doc = "Pin select for SCK"]
 pub mod sck;
-#[doc = "MOSI (rw) register accessor: Pin select for MOSI signal\n\nYou can [`read`](crate::Reg::read) this register and get [`mosi::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`mosi::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@mosi`] module"]
+#[doc = "MOSI (rw) register accessor: Pin select for SDO signal\n\nYou can [`read`](crate::Reg::read) this register and get [`mosi::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`mosi::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@mosi`] module"]
 #[doc(alias = "MOSI")]
 pub type Mosi = crate::Reg<mosi::MosiSpec>;
-#[doc = "Pin select for MOSI signal"]
+#[doc = "Pin select for SDO signal"]
 pub mod mosi;
-#[doc = "MISO (rw) register accessor: Pin select for MISO signal\n\nYou can [`read`](crate::Reg::read) this register and get [`miso::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`miso::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@miso`] module"]
+#[doc = "MISO (rw) register accessor: Pin select for SDI signal\n\nYou can [`read`](crate::Reg::read) this register and get [`miso::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`miso::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@miso`] module"]
 #[doc(alias = "MISO")]
 pub type Miso = crate::Reg<miso::MisoSpec>;
-#[doc = "Pin select for MISO signal"]
+#[doc = "Pin select for SDI signal"]
 pub mod miso;
 #[doc = "DCX (rw) register accessor: Pin select for DCX signal\n\nYou can [`read`](crate::Reg::read) this register and get [`dcx::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`dcx::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@dcx`] module"]
 #[doc(alias = "DCX")]

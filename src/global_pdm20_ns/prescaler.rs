@@ -3,18 +3,18 @@ pub type R = crate::R<PrescalerSpec>;
 #[doc = "Register `PRESCALER` writer"]
 pub type W = crate::W<PrescalerSpec>;
 #[doc = "Field `DIVISOR` reader - Core clock to PDM divisor"]
-pub type DivisorR = crate::FieldReader<u32>;
+pub type DivisorR = crate::FieldReader;
 #[doc = "Field `DIVISOR` writer - Core clock to PDM divisor"]
-pub type DivisorW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
+pub type DivisorW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
-    #[doc = "Bits 0:31 - Core clock to PDM divisor"]
+    #[doc = "Bits 0:7 - Core clock to PDM divisor"]
     #[inline(always)]
     pub fn divisor(&self) -> DivisorR {
-        DivisorR::new(self.bits)
+        DivisorR::new((self.bits & 0xff) as u8)
     }
 }
 impl W {
-    #[doc = "Bits 0:31 - Core clock to PDM divisor"]
+    #[doc = "Bits 0:7 - Core clock to PDM divisor"]
     #[inline(always)]
     pub fn divisor(&mut self) -> DivisorW<'_, PrescalerSpec> {
         DivisorW::new(self, 0)

@@ -13,30 +13,29 @@ pub struct RegisterBlock {
     events_ready: EventsReady,
     events_readynext: EventsReadynext,
     events_accesserror: EventsAccesserror,
-    events_eccerror: EventsEccerror,
-    _reserved9: [u8; 0x6c],
+    _reserved8: [u8; 0x70],
     publish_wokenup: PublishWokenup,
-    _reserved10: [u8; 0x017c],
+    _reserved9: [u8; 0x017c],
     inten: Inten,
     intenset: Intenset,
     intenclr: Intenclr,
     intpend: Intpend,
-    _reserved14: [u8; 0xf0],
+    _reserved13: [u8; 0xf0],
     ready: Ready,
     readynext: Readynext,
     accesserroraddr: Accesserroraddr,
-    _reserved17: [u8; 0x04],
+    _reserved16: [u8; 0x04],
     bufstatus: Bufstatus,
-    _reserved18: [u8; 0x04],
+    _reserved17: [u8; 0x04],
     ecc: Ecc,
-    _reserved19: [u8; 0xdc],
+    _reserved18: [u8; 0xdc],
     config: Config,
-    _reserved20: [u8; 0x08],
+    _reserved19: [u8; 0x08],
     readynexttimeout: Readynexttimeout,
     power: Power,
-    _reserved22: [u8; 0x24],
+    _reserved21: [u8; 0x24],
     erase: Erase,
-    _reserved23: [u8; 0x0c],
+    _reserved22: [u8; 0x0c],
     region: [Region; 5],
 }
 impl RegisterBlock {
@@ -79,11 +78,6 @@ impl RegisterBlock {
     #[inline(always)]
     pub const fn events_accesserror(&self) -> &EventsAccesserror {
         &self.events_accesserror
-    }
-    #[doc = "0x110 - Uncorrectable ECC error detected"]
-    #[inline(always)]
-    pub const fn events_eccerror(&self) -> &EventsEccerror {
-        &self.events_eccerror
     }
     #[doc = "0x180 - Publish configuration for event WOKENUP"]
     #[inline(always)]
@@ -155,13 +149,13 @@ impl RegisterBlock {
     pub const fn erase(&self) -> &Erase {
         &self.erase
     }
-    #[doc = "0x550..0x578 - Unspecified"]
+    #[doc = "0x550..0x578 - RRAMC can apply access privileges to regions of the RRAM. Some regions are dedicated for system use and are not available for configuration - refer to the instantiation table for details."]
     #[inline(always)]
     pub const fn region(&self, n: usize) -> &Region {
         &self.region[n]
     }
     #[doc = "Iterator for array of:"]
-    #[doc = "0x550..0x578 - Unspecified"]
+    #[doc = "0x550..0x578 - RRAMC can apply access privileges to regions of the RRAM. Some regions are dedicated for system use and are not available for configuration - refer to the instantiation table for details."]
     #[inline(always)]
     pub fn region_iter(&self) -> impl Iterator<Item = &Region> {
         self.region.iter()
@@ -208,11 +202,6 @@ pub mod events_readynext;
 pub type EventsAccesserror = crate::Reg<events_accesserror::EventsAccesserrorSpec>;
 #[doc = "RRAM access error"]
 pub mod events_accesserror;
-#[doc = "EVENTS_ECCERROR (rw) register accessor: Uncorrectable ECC error detected\n\nYou can [`read`](crate::Reg::read) this register and get [`events_eccerror::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_eccerror::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@events_eccerror`] module"]
-#[doc(alias = "EVENTS_ECCERROR")]
-pub type EventsEccerror = crate::Reg<events_eccerror::EventsEccerrorSpec>;
-#[doc = "Uncorrectable ECC error detected"]
-pub mod events_eccerror;
 #[doc = "PUBLISH_WOKENUP (rw) register accessor: Publish configuration for event WOKENUP\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_wokenup::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_wokenup::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_wokenup`] module"]
 #[doc(alias = "PUBLISH_WOKENUP")]
 pub type PublishWokenup = crate::Reg<publish_wokenup::PublishWokenupSpec>;
@@ -283,8 +272,8 @@ pub use self::erase::Erase;
 #[doc = r"Cluster"]
 #[doc = "Unspecified"]
 pub mod erase;
-#[doc = "Unspecified"]
+#[doc = "RRAMC can apply access privileges to regions of the RRAM. Some regions are dedicated for system use and are not available for configuration - refer to the instantiation table for details."]
 pub use self::region::Region;
 #[doc = r"Cluster"]
-#[doc = "Unspecified"]
+#[doc = "RRAMC can apply access privileges to regions of the RRAM. Some regions are dedicated for system use and are not available for configuration - refer to the instantiation table for details."]
 pub mod region;

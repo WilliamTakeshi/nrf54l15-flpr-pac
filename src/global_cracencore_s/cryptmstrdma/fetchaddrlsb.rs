@@ -2,25 +2,25 @@
 pub type R = crate::R<FetchaddrlsbSpec>;
 #[doc = "Register `FETCHADDRLSB` writer"]
 pub type W = crate::W<FetchaddrlsbSpec>;
-#[doc = "Field `FETCHADDRLSB` reader - "]
+#[doc = "Field `FETCHADDRLSB` reader - Address"]
 pub type FetchaddrlsbR = crate::FieldReader<u32>;
-#[doc = "Field `FETCHADDRLSB` writer - "]
+#[doc = "Field `FETCHADDRLSB` writer - Address"]
 pub type FetchaddrlsbW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
-    #[doc = "Bits 0:31"]
+    #[doc = "Bits 0:31 - Address"]
     #[inline(always)]
     pub fn fetchaddrlsb(&self) -> FetchaddrlsbR {
         FetchaddrlsbR::new(self.bits)
     }
 }
 impl W {
-    #[doc = "Bits 0:31"]
+    #[doc = "Bits 0:31 - Address"]
     #[inline(always)]
     pub fn fetchaddrlsb(&mut self) -> FetchaddrlsbW<'_, FetchaddrlsbSpec> {
         FetchaddrlsbW::new(self, 0)
     }
 }
-#[doc = "Fetch Address Least Significant Bit\n\nYou can [`read`](crate::Reg::read) this register and get [`fetchaddrlsb::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fetchaddrlsb::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Fetch Address Least Significant Word\n\nYou can [`read`](crate::Reg::read) this register and get [`fetchaddrlsb::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fetchaddrlsb::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct FetchaddrlsbSpec;
 impl crate::RegisterSpec for FetchaddrlsbSpec {
     type Ux = u32;

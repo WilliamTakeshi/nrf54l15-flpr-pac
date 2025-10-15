@@ -1,10 +1,10 @@
-#[doc = "Register `PUBLISH_XOTUNEFAILED` reader"]
-pub type R = crate::R<PublishXotunefailedSpec>;
-#[doc = "Register `PUBLISH_XOTUNEFAILED` writer"]
-pub type W = crate::W<PublishXotunefailedSpec>;
-#[doc = "Field `CHIDX` reader - DPPI channel that event XOTUNEFAILED will publish to"]
+#[doc = "Register `PUBLISH_CLKOUTREADY` reader"]
+pub type R = crate::R<PublishClkoutreadySpec>;
+#[doc = "Register `PUBLISH_CLKOUTREADY` writer"]
+pub type W = crate::W<PublishClkoutreadySpec>;
+#[doc = "Field `CHIDX` reader - DPPI channel that event CLKOUTREADY will publish to"]
 pub type ChidxR = crate::FieldReader;
-#[doc = "Field `CHIDX` writer - DPPI channel that event XOTUNEFAILED will publish to"]
+#[doc = "Field `CHIDX` writer - DPPI channel that event CLKOUTREADY will publish to"]
 pub type ChidxW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -60,7 +60,7 @@ where
     }
 }
 impl R {
-    #[doc = "Bits 0:7 - DPPI channel that event XOTUNEFAILED will publish to"]
+    #[doc = "Bits 0:7 - DPPI channel that event CLKOUTREADY will publish to"]
     #[inline(always)]
     pub fn chidx(&self) -> ChidxR {
         ChidxR::new((self.bits & 0xff) as u8)
@@ -72,27 +72,27 @@ impl R {
     }
 }
 impl W {
-    #[doc = "Bits 0:7 - DPPI channel that event XOTUNEFAILED will publish to"]
+    #[doc = "Bits 0:7 - DPPI channel that event CLKOUTREADY will publish to"]
     #[inline(always)]
-    pub fn chidx(&mut self) -> ChidxW<'_, PublishXotunefailedSpec> {
+    pub fn chidx(&mut self) -> ChidxW<'_, PublishClkoutreadySpec> {
         ChidxW::new(self, 0)
     }
     #[doc = "Bit 31"]
     #[inline(always)]
-    pub fn en(&mut self) -> EnW<'_, PublishXotunefailedSpec> {
+    pub fn en(&mut self) -> EnW<'_, PublishClkoutreadySpec> {
         EnW::new(self, 31)
     }
 }
-#[doc = "Publish configuration for event XOTUNEFAILED\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_xotunefailed::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_xotunefailed::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct PublishXotunefailedSpec;
-impl crate::RegisterSpec for PublishXotunefailedSpec {
+#[doc = "Publish configuration for event CLKOUTREADY\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_clkoutready::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_clkoutready::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct PublishClkoutreadySpec;
+impl crate::RegisterSpec for PublishClkoutreadySpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [`publish_xotunefailed::R`](R) reader structure"]
-impl crate::Readable for PublishXotunefailedSpec {}
-#[doc = "`write(|w| ..)` method takes [`publish_xotunefailed::W`](W) writer structure"]
-impl crate::Writable for PublishXotunefailedSpec {
+#[doc = "`read()` method returns [`publish_clkoutready::R`](R) reader structure"]
+impl crate::Readable for PublishClkoutreadySpec {}
+#[doc = "`write(|w| ..)` method takes [`publish_clkoutready::W`](W) writer structure"]
+impl crate::Writable for PublishClkoutreadySpec {
     type Safety = crate::Unsafe;
 }
-#[doc = "`reset()` method sets PUBLISH_XOTUNEFAILED to value 0"]
-impl crate::Resettable for PublishXotunefailedSpec {}
+#[doc = "`reset()` method sets PUBLISH_CLKOUTREADY to value 0"]
+impl crate::Resettable for PublishClkoutreadySpec {}

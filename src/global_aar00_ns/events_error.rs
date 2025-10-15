@@ -2,7 +2,7 @@
 pub type R = crate::R<EventsErrorSpec>;
 #[doc = "Register `EVENTS_ERROR` writer"]
 pub type W = crate::W<EventsErrorSpec>;
-#[doc = "Operation aborted because of a STOP task or due to an error\n\nValue on reset: 0"]
+#[doc = "Operation aborted because of a STOP task or due to an error This event does not generate an interrupt\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum EventsError {
     #[doc = "0: Event not generated"]
@@ -16,7 +16,7 @@ impl From<EventsError> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Field `EVENTS_ERROR` reader - Operation aborted because of a STOP task or due to an error"]
+#[doc = "Field `EVENTS_ERROR` reader - Operation aborted because of a STOP task or due to an error This event does not generate an interrupt"]
 pub type EventsErrorR = crate::BitReader<EventsError>;
 impl EventsErrorR {
     #[doc = "Get enumerated values variant"]
@@ -38,7 +38,7 @@ impl EventsErrorR {
         *self == EventsError::Generated
     }
 }
-#[doc = "Field `EVENTS_ERROR` writer - Operation aborted because of a STOP task or due to an error"]
+#[doc = "Field `EVENTS_ERROR` writer - Operation aborted because of a STOP task or due to an error This event does not generate an interrupt"]
 pub type EventsErrorW<'a, REG> = crate::BitWriter<'a, REG, EventsError>;
 impl<'a, REG> EventsErrorW<'a, REG>
 where
@@ -56,20 +56,20 @@ where
     }
 }
 impl R {
-    #[doc = "Bit 0 - Operation aborted because of a STOP task or due to an error"]
+    #[doc = "Bit 0 - Operation aborted because of a STOP task or due to an error This event does not generate an interrupt"]
     #[inline(always)]
     pub fn events_error(&self) -> EventsErrorR {
         EventsErrorR::new((self.bits & 1) != 0)
     }
 }
 impl W {
-    #[doc = "Bit 0 - Operation aborted because of a STOP task or due to an error"]
+    #[doc = "Bit 0 - Operation aborted because of a STOP task or due to an error This event does not generate an interrupt"]
     #[inline(always)]
     pub fn events_error(&mut self) -> EventsErrorW<'_, EventsErrorSpec> {
         EventsErrorW::new(self, 0)
     }
 }
-#[doc = "Operation aborted because of a STOP task or due to an error\n\nYou can [`read`](crate::Reg::read) this register and get [`events_error::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_error::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Operation aborted because of a STOP task or due to an error This event does not generate an interrupt\n\nYou can [`read`](crate::Reg::read) this register and get [`events_error::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_error::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct EventsErrorSpec;
 impl crate::RegisterSpec for EventsErrorSpec {
     type Ux = u32;

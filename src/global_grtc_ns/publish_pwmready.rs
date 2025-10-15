@@ -1,10 +1,10 @@
-#[doc = "Register `PUBLISH_TICK` reader"]
-pub type R = crate::R<PublishTickSpec>;
-#[doc = "Register `PUBLISH_TICK` writer"]
-pub type W = crate::W<PublishTickSpec>;
-#[doc = "Field `CHIDX` reader - DPPI channel that event TICK will publish to"]
+#[doc = "Register `PUBLISH_PWMREADY` reader"]
+pub type R = crate::R<PublishPwmreadySpec>;
+#[doc = "Register `PUBLISH_PWMREADY` writer"]
+pub type W = crate::W<PublishPwmreadySpec>;
+#[doc = "Field `CHIDX` reader - DPPI channel that event PWMREADY will publish to"]
 pub type ChidxR = crate::FieldReader;
-#[doc = "Field `CHIDX` writer - DPPI channel that event TICK will publish to"]
+#[doc = "Field `CHIDX` writer - DPPI channel that event PWMREADY will publish to"]
 pub type ChidxW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -60,7 +60,7 @@ where
     }
 }
 impl R {
-    #[doc = "Bits 0:7 - DPPI channel that event TICK will publish to"]
+    #[doc = "Bits 0:7 - DPPI channel that event PWMREADY will publish to"]
     #[inline(always)]
     pub fn chidx(&self) -> ChidxR {
         ChidxR::new((self.bits & 0xff) as u8)
@@ -72,27 +72,27 @@ impl R {
     }
 }
 impl W {
-    #[doc = "Bits 0:7 - DPPI channel that event TICK will publish to"]
+    #[doc = "Bits 0:7 - DPPI channel that event PWMREADY will publish to"]
     #[inline(always)]
-    pub fn chidx(&mut self) -> ChidxW<'_, PublishTickSpec> {
+    pub fn chidx(&mut self) -> ChidxW<'_, PublishPwmreadySpec> {
         ChidxW::new(self, 0)
     }
     #[doc = "Bit 31"]
     #[inline(always)]
-    pub fn en(&mut self) -> EnW<'_, PublishTickSpec> {
+    pub fn en(&mut self) -> EnW<'_, PublishPwmreadySpec> {
         EnW::new(self, 31)
     }
 }
-#[doc = "Publish configuration for event TICK\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_tick::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_tick::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct PublishTickSpec;
-impl crate::RegisterSpec for PublishTickSpec {
+#[doc = "Publish configuration for event PWMREADY\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_pwmready::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_pwmready::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct PublishPwmreadySpec;
+impl crate::RegisterSpec for PublishPwmreadySpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [`publish_tick::R`](R) reader structure"]
-impl crate::Readable for PublishTickSpec {}
-#[doc = "`write(|w| ..)` method takes [`publish_tick::W`](W) writer structure"]
-impl crate::Writable for PublishTickSpec {
+#[doc = "`read()` method returns [`publish_pwmready::R`](R) reader structure"]
+impl crate::Readable for PublishPwmreadySpec {}
+#[doc = "`write(|w| ..)` method takes [`publish_pwmready::W`](W) writer structure"]
+impl crate::Writable for PublishPwmreadySpec {
     type Safety = crate::Unsafe;
 }
-#[doc = "`reset()` method sets PUBLISH_TICK to value 0"]
-impl crate::Resettable for PublishTickSpec {}
+#[doc = "`reset()` method sets PUBLISH_PWMREADY to value 0"]
+impl crate::Resettable for PublishPwmreadySpec {}

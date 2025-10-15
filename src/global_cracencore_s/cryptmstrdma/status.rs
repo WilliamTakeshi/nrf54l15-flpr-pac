@@ -2,45 +2,45 @@
 pub type R = crate::R<StatusSpec>;
 #[doc = "Register `STATUS` writer"]
 pub type W = crate::W<StatusSpec>;
-#[doc = "Field `FETCHBUSY` reader - "]
+#[doc = "Field `FETCHBUSY` reader - This bit is high as long as the fetcher DMA is busy."]
 pub type FetchbusyR = crate::BitReader;
-#[doc = "Field `PUSHBUSY` reader - "]
+#[doc = "Field `PUSHBUSY` reader - This bit is high as long as the pusher DMA is busy."]
 pub type PushbusyR = crate::BitReader;
-#[doc = "Field `FETCHNOTEMPTY` reader - "]
+#[doc = "Field `FETCHNOTEMPTY` reader - Not empty flag for fetcher DMA input FIFO"]
 pub type FetchnotemptyR = crate::BitReader;
-#[doc = "Field `PUSHWAITINGFIFO` reader - "]
+#[doc = "Field `PUSHWAITINGFIFO` reader - Pusher DMA Waiting FIFO. This bit is high when the pusher is waiting for more data in output FIFO."]
 pub type PushwaitingfifoR = crate::BitReader;
-#[doc = "Field `SOFTRSTBUSY` reader - "]
+#[doc = "Field `SOFTRSTBUSY` reader - This bit is high when the soft reset is on going"]
 pub type SoftrstbusyR = crate::BitReader;
-#[doc = "Field `PUSHNBDATA` reader - "]
+#[doc = "Field `PUSHNBDATA` reader - Amount of data in the pusher DMA output FIFO"]
 pub type PushnbdataR = crate::FieldReader<u16>;
 impl R {
-    #[doc = "Bit 0"]
+    #[doc = "Bit 0 - This bit is high as long as the fetcher DMA is busy."]
     #[inline(always)]
     pub fn fetchbusy(&self) -> FetchbusyR {
         FetchbusyR::new((self.bits & 1) != 0)
     }
-    #[doc = "Bit 1"]
+    #[doc = "Bit 1 - This bit is high as long as the pusher DMA is busy."]
     #[inline(always)]
     pub fn pushbusy(&self) -> PushbusyR {
         PushbusyR::new(((self.bits >> 1) & 1) != 0)
     }
-    #[doc = "Bit 4"]
+    #[doc = "Bit 4 - Not empty flag for fetcher DMA input FIFO"]
     #[inline(always)]
     pub fn fetchnotempty(&self) -> FetchnotemptyR {
         FetchnotemptyR::new(((self.bits >> 4) & 1) != 0)
     }
-    #[doc = "Bit 5"]
+    #[doc = "Bit 5 - Pusher DMA Waiting FIFO. This bit is high when the pusher is waiting for more data in output FIFO."]
     #[inline(always)]
     pub fn pushwaitingfifo(&self) -> PushwaitingfifoR {
         PushwaitingfifoR::new(((self.bits >> 5) & 1) != 0)
     }
-    #[doc = "Bit 6"]
+    #[doc = "Bit 6 - This bit is high when the soft reset is on going"]
     #[inline(always)]
     pub fn softrstbusy(&self) -> SoftrstbusyR {
         SoftrstbusyR::new(((self.bits >> 6) & 1) != 0)
     }
-    #[doc = "Bits 16:31"]
+    #[doc = "Bits 16:31 - Amount of data in the pusher DMA output FIFO"]
     #[inline(always)]
     pub fn pushnbdata(&self) -> PushnbdataR {
         PushnbdataR::new(((self.bits >> 16) & 0xffff) as u16)

@@ -8,8 +8,6 @@ pub struct RegisterBlock {
     enable: Enable,
     _reserved3: [u8; 0x14],
     traceportspeed: Traceportspeed,
-    _reserved4: [u8; 0x04],
-    tinstance: Tinstance,
 }
 impl RegisterBlock {
     #[doc = "0x400 - System power-up request"]
@@ -32,11 +30,6 @@ impl RegisterBlock {
     pub const fn traceportspeed(&self) -> &Traceportspeed {
         &self.traceportspeed
     }
-    #[doc = "0x520 - SW-DP Target instance"]
-    #[inline(always)]
-    pub const fn tinstance(&self) -> &Tinstance {
-        &self.tinstance
-    }
 }
 #[doc = "SYSPWRUPREQ (rw) register accessor: System power-up request\n\nYou can [`read`](crate::Reg::read) this register and get [`syspwrupreq::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`syspwrupreq::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@syspwrupreq`] module"]
 #[doc(alias = "SYSPWRUPREQ")]
@@ -58,8 +51,3 @@ pub mod enable;
 pub type Traceportspeed = crate::Reg<traceportspeed::TraceportspeedSpec>;
 #[doc = "Trace port speed"]
 pub mod traceportspeed;
-#[doc = "TINSTANCE (rw) register accessor: SW-DP Target instance\n\nYou can [`read`](crate::Reg::read) this register and get [`tinstance::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`tinstance::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@tinstance`] module"]
-#[doc(alias = "TINSTANCE")]
-pub type Tinstance = crate::Reg<tinstance::TinstanceSpec>;
-#[doc = "SW-DP Target instance"]
-pub mod tinstance;

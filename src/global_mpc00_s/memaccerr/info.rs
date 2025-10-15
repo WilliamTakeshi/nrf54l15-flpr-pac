@@ -1,9 +1,5 @@
 #[doc = "Register `INFO` reader"]
 pub type R = crate::R<InfoSpec>;
-#[doc = "Field `OWNERID` reader - Owner identifier of the erroneous access"]
-pub type OwneridR = crate::FieldReader;
-#[doc = "Field `MASTERPORT` reader - Master port where erroneous access is detected"]
-pub type MasterportR = crate::FieldReader;
 #[doc = "Read bit of bus access\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Read {
@@ -153,7 +149,7 @@ impl SecureR {
 pub enum Errorsource {
     #[doc = "1: Error was triggered by MPC module"]
     Mpc = 1,
-    #[doc = "0: Error was triggered by an AXI slave"]
+    #[doc = "0: Error was triggered by a Subordinate"]
     Slave = 0,
 }
 impl From<Errorsource> for bool {
@@ -178,23 +174,13 @@ impl ErrorsourceR {
     pub fn is_mpc(&self) -> bool {
         *self == Errorsource::Mpc
     }
-    #[doc = "Error was triggered by an AXI slave"]
+    #[doc = "Error was triggered by a Subordinate"]
     #[inline(always)]
     pub fn is_slave(&self) -> bool {
         *self == Errorsource::Slave
     }
 }
 impl R {
-    #[doc = "Bits 0:3 - Owner identifier of the erroneous access"]
-    #[inline(always)]
-    pub fn ownerid(&self) -> OwneridR {
-        OwneridR::new((self.bits & 0x0f) as u8)
-    }
-    #[doc = "Bits 4:8 - Master port where erroneous access is detected"]
-    #[inline(always)]
-    pub fn masterport(&self) -> MasterportR {
-        MasterportR::new(((self.bits >> 4) & 0x1f) as u8)
-    }
     #[doc = "Bit 12 - Read bit of bus access"]
     #[inline(always)]
     pub fn read(&self) -> ReadR {

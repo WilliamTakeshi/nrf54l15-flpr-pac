@@ -59,30 +59,38 @@ where
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum Threshold {
-    #[doc = "0: Set threshold to 1.7 V"]
+    #[doc = "0: Set threshold to 1.7 V for VDD"]
     V17 = 0,
-    #[doc = "1: Set threshold to 1.8 V"]
+    #[doc = "1: Set threshold to 1.8 V for VDD"]
     V18 = 1,
-    #[doc = "2: Set threshold to 1.9 V"]
+    #[doc = "2: Set threshold to 1.9 V for VDD"]
     V19 = 2,
-    #[doc = "3: Set threshold to 2.0 V"]
+    #[doc = "3: Set threshold to 2.0 V for VDD"]
     V20 = 3,
-    #[doc = "4: Set threshold to 2.1 V"]
+    #[doc = "4: Set threshold to 2.1 V for VDD"]
     V21 = 4,
-    #[doc = "5: Set threshold to 2.2 V"]
+    #[doc = "5: Set threshold to 2.2 V for VDD"]
     V22 = 5,
-    #[doc = "6: Set threshold to 2.3 V"]
+    #[doc = "6: Set threshold to 2.3 V for VDD"]
     V23 = 6,
-    #[doc = "7: Set threshold to 2.4 V"]
+    #[doc = "7: Set threshold to 2.4 V for VDD"]
     V24 = 7,
-    #[doc = "8: Set threshold to 2.5 V"]
+    #[doc = "8: Set threshold to 2.5 V for VDD"]
     V25 = 8,
-    #[doc = "9: Set threshold to 2.6 V"]
+    #[doc = "9: Set threshold to 2.6 V for VDD"]
     V26 = 9,
-    #[doc = "10: Set threshold to 2.7 V"]
+    #[doc = "10: Set threshold to 2.7 V for VDD"]
     V27 = 10,
-    #[doc = "11: Set threshold to 2.8 V"]
+    #[doc = "11: Set threshold to 2.8 V for VDD"]
     V28 = 11,
+    #[doc = "12: Set threshold to 2.9 V for VDD"]
+    V29 = 12,
+    #[doc = "13: Set threshold to 3.0 V for VDD"]
+    V30 = 13,
+    #[doc = "14: Set threshold to 3.1 V for VDD"]
+    V31 = 14,
+    #[doc = "15: Set threshold to 3.2 V for VDD"]
+    V32 = 15,
 }
 impl From<Threshold> for u8 {
     #[inline(always)]
@@ -99,150 +107,194 @@ pub type ThresholdR = crate::FieldReader<Threshold>;
 impl ThresholdR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<Threshold> {
+    pub const fn variant(&self) -> Threshold {
         match self.bits {
-            0 => Some(Threshold::V17),
-            1 => Some(Threshold::V18),
-            2 => Some(Threshold::V19),
-            3 => Some(Threshold::V20),
-            4 => Some(Threshold::V21),
-            5 => Some(Threshold::V22),
-            6 => Some(Threshold::V23),
-            7 => Some(Threshold::V24),
-            8 => Some(Threshold::V25),
-            9 => Some(Threshold::V26),
-            10 => Some(Threshold::V27),
-            11 => Some(Threshold::V28),
-            _ => None,
+            0 => Threshold::V17,
+            1 => Threshold::V18,
+            2 => Threshold::V19,
+            3 => Threshold::V20,
+            4 => Threshold::V21,
+            5 => Threshold::V22,
+            6 => Threshold::V23,
+            7 => Threshold::V24,
+            8 => Threshold::V25,
+            9 => Threshold::V26,
+            10 => Threshold::V27,
+            11 => Threshold::V28,
+            12 => Threshold::V29,
+            13 => Threshold::V30,
+            14 => Threshold::V31,
+            15 => Threshold::V32,
+            _ => unreachable!(),
         }
     }
-    #[doc = "Set threshold to 1.7 V"]
+    #[doc = "Set threshold to 1.7 V for VDD"]
     #[inline(always)]
     pub fn is_v17(&self) -> bool {
         *self == Threshold::V17
     }
-    #[doc = "Set threshold to 1.8 V"]
+    #[doc = "Set threshold to 1.8 V for VDD"]
     #[inline(always)]
     pub fn is_v18(&self) -> bool {
         *self == Threshold::V18
     }
-    #[doc = "Set threshold to 1.9 V"]
+    #[doc = "Set threshold to 1.9 V for VDD"]
     #[inline(always)]
     pub fn is_v19(&self) -> bool {
         *self == Threshold::V19
     }
-    #[doc = "Set threshold to 2.0 V"]
+    #[doc = "Set threshold to 2.0 V for VDD"]
     #[inline(always)]
     pub fn is_v20(&self) -> bool {
         *self == Threshold::V20
     }
-    #[doc = "Set threshold to 2.1 V"]
+    #[doc = "Set threshold to 2.1 V for VDD"]
     #[inline(always)]
     pub fn is_v21(&self) -> bool {
         *self == Threshold::V21
     }
-    #[doc = "Set threshold to 2.2 V"]
+    #[doc = "Set threshold to 2.2 V for VDD"]
     #[inline(always)]
     pub fn is_v22(&self) -> bool {
         *self == Threshold::V22
     }
-    #[doc = "Set threshold to 2.3 V"]
+    #[doc = "Set threshold to 2.3 V for VDD"]
     #[inline(always)]
     pub fn is_v23(&self) -> bool {
         *self == Threshold::V23
     }
-    #[doc = "Set threshold to 2.4 V"]
+    #[doc = "Set threshold to 2.4 V for VDD"]
     #[inline(always)]
     pub fn is_v24(&self) -> bool {
         *self == Threshold::V24
     }
-    #[doc = "Set threshold to 2.5 V"]
+    #[doc = "Set threshold to 2.5 V for VDD"]
     #[inline(always)]
     pub fn is_v25(&self) -> bool {
         *self == Threshold::V25
     }
-    #[doc = "Set threshold to 2.6 V"]
+    #[doc = "Set threshold to 2.6 V for VDD"]
     #[inline(always)]
     pub fn is_v26(&self) -> bool {
         *self == Threshold::V26
     }
-    #[doc = "Set threshold to 2.7 V"]
+    #[doc = "Set threshold to 2.7 V for VDD"]
     #[inline(always)]
     pub fn is_v27(&self) -> bool {
         *self == Threshold::V27
     }
-    #[doc = "Set threshold to 2.8 V"]
+    #[doc = "Set threshold to 2.8 V for VDD"]
     #[inline(always)]
     pub fn is_v28(&self) -> bool {
         *self == Threshold::V28
     }
+    #[doc = "Set threshold to 2.9 V for VDD"]
+    #[inline(always)]
+    pub fn is_v29(&self) -> bool {
+        *self == Threshold::V29
+    }
+    #[doc = "Set threshold to 3.0 V for VDD"]
+    #[inline(always)]
+    pub fn is_v30(&self) -> bool {
+        *self == Threshold::V30
+    }
+    #[doc = "Set threshold to 3.1 V for VDD"]
+    #[inline(always)]
+    pub fn is_v31(&self) -> bool {
+        *self == Threshold::V31
+    }
+    #[doc = "Set threshold to 3.2 V for VDD"]
+    #[inline(always)]
+    pub fn is_v32(&self) -> bool {
+        *self == Threshold::V32
+    }
 }
 #[doc = "Field `THRESHOLD` writer - Power-fail comparator threshold setting"]
-pub type ThresholdW<'a, REG> = crate::FieldWriter<'a, REG, 4, Threshold>;
+pub type ThresholdW<'a, REG> = crate::FieldWriter<'a, REG, 4, Threshold, crate::Safe>;
 impl<'a, REG> ThresholdW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
 {
-    #[doc = "Set threshold to 1.7 V"]
+    #[doc = "Set threshold to 1.7 V for VDD"]
     #[inline(always)]
     pub fn v17(self) -> &'a mut crate::W<REG> {
         self.variant(Threshold::V17)
     }
-    #[doc = "Set threshold to 1.8 V"]
+    #[doc = "Set threshold to 1.8 V for VDD"]
     #[inline(always)]
     pub fn v18(self) -> &'a mut crate::W<REG> {
         self.variant(Threshold::V18)
     }
-    #[doc = "Set threshold to 1.9 V"]
+    #[doc = "Set threshold to 1.9 V for VDD"]
     #[inline(always)]
     pub fn v19(self) -> &'a mut crate::W<REG> {
         self.variant(Threshold::V19)
     }
-    #[doc = "Set threshold to 2.0 V"]
+    #[doc = "Set threshold to 2.0 V for VDD"]
     #[inline(always)]
     pub fn v20(self) -> &'a mut crate::W<REG> {
         self.variant(Threshold::V20)
     }
-    #[doc = "Set threshold to 2.1 V"]
+    #[doc = "Set threshold to 2.1 V for VDD"]
     #[inline(always)]
     pub fn v21(self) -> &'a mut crate::W<REG> {
         self.variant(Threshold::V21)
     }
-    #[doc = "Set threshold to 2.2 V"]
+    #[doc = "Set threshold to 2.2 V for VDD"]
     #[inline(always)]
     pub fn v22(self) -> &'a mut crate::W<REG> {
         self.variant(Threshold::V22)
     }
-    #[doc = "Set threshold to 2.3 V"]
+    #[doc = "Set threshold to 2.3 V for VDD"]
     #[inline(always)]
     pub fn v23(self) -> &'a mut crate::W<REG> {
         self.variant(Threshold::V23)
     }
-    #[doc = "Set threshold to 2.4 V"]
+    #[doc = "Set threshold to 2.4 V for VDD"]
     #[inline(always)]
     pub fn v24(self) -> &'a mut crate::W<REG> {
         self.variant(Threshold::V24)
     }
-    #[doc = "Set threshold to 2.5 V"]
+    #[doc = "Set threshold to 2.5 V for VDD"]
     #[inline(always)]
     pub fn v25(self) -> &'a mut crate::W<REG> {
         self.variant(Threshold::V25)
     }
-    #[doc = "Set threshold to 2.6 V"]
+    #[doc = "Set threshold to 2.6 V for VDD"]
     #[inline(always)]
     pub fn v26(self) -> &'a mut crate::W<REG> {
         self.variant(Threshold::V26)
     }
-    #[doc = "Set threshold to 2.7 V"]
+    #[doc = "Set threshold to 2.7 V for VDD"]
     #[inline(always)]
     pub fn v27(self) -> &'a mut crate::W<REG> {
         self.variant(Threshold::V27)
     }
-    #[doc = "Set threshold to 2.8 V"]
+    #[doc = "Set threshold to 2.8 V for VDD"]
     #[inline(always)]
     pub fn v28(self) -> &'a mut crate::W<REG> {
         self.variant(Threshold::V28)
+    }
+    #[doc = "Set threshold to 2.9 V for VDD"]
+    #[inline(always)]
+    pub fn v29(self) -> &'a mut crate::W<REG> {
+        self.variant(Threshold::V29)
+    }
+    #[doc = "Set threshold to 3.0 V for VDD"]
+    #[inline(always)]
+    pub fn v30(self) -> &'a mut crate::W<REG> {
+        self.variant(Threshold::V30)
+    }
+    #[doc = "Set threshold to 3.1 V for VDD"]
+    #[inline(always)]
+    pub fn v31(self) -> &'a mut crate::W<REG> {
+        self.variant(Threshold::V31)
+    }
+    #[doc = "Set threshold to 3.2 V for VDD"]
+    #[inline(always)]
+    pub fn v32(self) -> &'a mut crate::W<REG> {
+        self.variant(Threshold::V32)
     }
 }
 #[doc = "Disable the POFWARN power-fail warning event\n\nValue on reset: 0"]

@@ -66,7 +66,7 @@ impl RegisterBlock {
     pub const fn events_notresolved(&self) -> &EventsNotresolved {
         &self.events_notresolved
     }
-    #[doc = "0x10c - Operation aborted because of a STOP task or due to an error"]
+    #[doc = "0x10c - Operation aborted because of a STOP task or due to an error This event does not generate an interrupt"]
     #[inline(always)]
     pub const fn events_error(&self) -> &EventsError {
         &self.events_error
@@ -162,10 +162,10 @@ pub mod events_resolved;
 pub type EventsNotresolved = crate::Reg<events_notresolved::EventsNotresolvedSpec>;
 #[doc = "Address not resolved"]
 pub mod events_notresolved;
-#[doc = "EVENTS_ERROR (rw) register accessor: Operation aborted because of a STOP task or due to an error\n\nYou can [`read`](crate::Reg::read) this register and get [`events_error::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_error::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@events_error`] module"]
+#[doc = "EVENTS_ERROR (rw) register accessor: Operation aborted because of a STOP task or due to an error This event does not generate an interrupt\n\nYou can [`read`](crate::Reg::read) this register and get [`events_error::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_error::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@events_error`] module"]
 #[doc(alias = "EVENTS_ERROR")]
 pub type EventsError = crate::Reg<events_error::EventsErrorSpec>;
-#[doc = "Operation aborted because of a STOP task or due to an error"]
+#[doc = "Operation aborted because of a STOP task or due to an error This event does not generate an interrupt"]
 pub mod events_error;
 #[doc = "PUBLISH_END (rw) register accessor: Publish configuration for event END\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_end::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_end::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_end`] module"]
 #[doc(alias = "PUBLISH_END")]

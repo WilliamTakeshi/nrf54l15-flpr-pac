@@ -97,7 +97,7 @@ impl W {
         ConnectW::new(self, 31)
     }
 }
-#[doc = "Pin select for MISO signal\n\nYou can [`read`](crate::Reg::read) this register and get [`miso::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`miso::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Pin select for SDO signal\n\nYou can [`read`](crate::Reg::read) this register and get [`miso::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`miso::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct MisoSpec;
 impl crate::RegisterSpec for MisoSpec {
     type Ux = u32;

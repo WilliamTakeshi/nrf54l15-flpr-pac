@@ -2,19 +2,19 @@
 pub type R = crate::R<FifolevelSpec>;
 #[doc = "Register `FIFOLEVEL` writer"]
 pub type W = crate::W<FifolevelSpec>;
-#[doc = "Field `FIFOLEVEL` reader - Number of 32 bits words of random available in the FIFO."]
+#[doc = "Field `FIFOLEVEL` reader - Number of 32 bits words of random values available in the FIFO."]
 pub type FifolevelR = crate::FieldReader<u32>;
-#[doc = "Field `FIFOLEVEL` writer - Number of 32 bits words of random available in the FIFO."]
+#[doc = "Field `FIFOLEVEL` writer - Number of 32 bits words of random values available in the FIFO."]
 pub type FifolevelW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
-    #[doc = "Bits 0:31 - Number of 32 bits words of random available in the FIFO."]
+    #[doc = "Bits 0:31 - Number of 32 bits words of random values available in the FIFO."]
     #[inline(always)]
     pub fn fifolevel(&self) -> FifolevelR {
         FifolevelR::new(self.bits)
     }
 }
 impl W {
-    #[doc = "Bits 0:31 - Number of 32 bits words of random available in the FIFO."]
+    #[doc = "Bits 0:31 - Number of 32 bits words of random values available in the FIFO."]
     #[inline(always)]
     pub fn fifolevel(&mut self) -> FifolevelW<'_, FifolevelSpec> {
         FifolevelW::new(self, 0)

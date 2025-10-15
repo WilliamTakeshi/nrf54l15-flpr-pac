@@ -1,22 +1,15 @@
 #[repr(C)]
 #[doc = "Register block"]
 pub struct RegisterBlock {
-    _reserved0: [u8; 0x0400],
-    vregm: Vregm,
-    _reserved1: [u8; 0xfc],
+    _reserved0: [u8; 0x0500],
     systemoff: Systemoff,
-    _reserved2: [u8; 0x2c],
+    _reserved1: [u8; 0x2c],
     pofcon: Pofcon,
     pofstat: Pofstat,
-    _reserved4: [u8; 0xc8],
+    _reserved3: [u8; 0xc8],
     vregmain: Vregmain,
 }
 impl RegisterBlock {
-    #[doc = "0x400 - Register interface for the medium voltage regulator"]
-    #[inline(always)]
-    pub const fn vregm(&self) -> &Vregm {
-        &self.vregm
-    }
     #[doc = "0x500 - System OFF register"]
     #[inline(always)]
     pub const fn systemoff(&self) -> &Systemoff {
@@ -38,11 +31,6 @@ impl RegisterBlock {
         &self.vregmain
     }
 }
-#[doc = "Register interface for the medium voltage regulator"]
-pub use self::vregm::Vregm;
-#[doc = r"Cluster"]
-#[doc = "Register interface for the medium voltage regulator"]
-pub mod vregm;
 #[doc = "SYSTEMOFF (w) register accessor: System OFF register\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`systemoff::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@systemoff`] module"]
 #[doc(alias = "SYSTEMOFF")]
 pub type Systemoff = crate::Reg<systemoff::SystemoffSpec>;

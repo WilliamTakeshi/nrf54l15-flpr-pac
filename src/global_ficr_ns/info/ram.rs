@@ -6,6 +6,10 @@ pub type R = crate::R<RamSpec>;
 pub enum Ram {
     #[doc = "256: 256 kByte RAM"]
     K256 = 256,
+    #[doc = "192: 192 kByte RAM"]
+    K192 = 192,
+    #[doc = "96: 96 kByte RAM"]
+    K96 = 96,
     #[doc = "4294967295: Unspecified"]
     Unspecified = 4294967295,
 }
@@ -27,6 +31,8 @@ impl RamR {
     pub const fn variant(&self) -> Option<Ram> {
         match self.bits {
             256 => Some(Ram::K256),
+            192 => Some(Ram::K192),
+            96 => Some(Ram::K96),
             4294967295 => Some(Ram::Unspecified),
             _ => None,
         }
@@ -35,6 +41,16 @@ impl RamR {
     #[inline(always)]
     pub fn is_k256(&self) -> bool {
         *self == Ram::K256
+    }
+    #[doc = "192 kByte RAM"]
+    #[inline(always)]
+    pub fn is_k192(&self) -> bool {
+        *self == Ram::K192
+    }
+    #[doc = "96 kByte RAM"]
+    #[inline(always)]
+    pub fn is_k96(&self) -> bool {
+        *self == Ram::K96
     }
     #[doc = "Unspecified"]
     #[inline(always)]

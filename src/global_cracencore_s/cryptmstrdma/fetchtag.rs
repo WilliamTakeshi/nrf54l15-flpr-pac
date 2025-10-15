@@ -2,25 +2,25 @@
 pub type R = crate::R<FetchtagSpec>;
 #[doc = "Register `FETCHTAG` writer"]
 pub type W = crate::W<FetchtagSpec>;
-#[doc = "Field `FETCHTAG` reader - "]
+#[doc = "Field `FETCHTAG` reader - User tag"]
 pub type FetchtagR = crate::FieldReader<u32>;
-#[doc = "Field `FETCHTAG` writer - "]
+#[doc = "Field `FETCHTAG` writer - User tag"]
 pub type FetchtagW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
-    #[doc = "Bits 0:31"]
+    #[doc = "Bits 0:31 - User tag"]
     #[inline(always)]
     pub fn fetchtag(&self) -> FetchtagR {
         FetchtagR::new(self.bits)
     }
 }
 impl W {
-    #[doc = "Bits 0:31"]
+    #[doc = "Bits 0:31 - User tag"]
     #[inline(always)]
     pub fn fetchtag(&mut self) -> FetchtagW<'_, FetchtagSpec> {
         FetchtagW::new(self, 0)
     }
 }
-#[doc = "Fetch Tag\n\nYou can [`read`](crate::Reg::read) this register and get [`fetchtag::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fetchtag::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Fetch User Tag (only used in direct mode)\n\nYou can [`read`](crate::Reg::read) this register and get [`fetchtag::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fetchtag::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct FetchtagSpec;
 impl crate::RegisterSpec for FetchtagSpec {
     type Ux = u32;

@@ -504,6 +504,78 @@ impl PwmperiodendR {
         *self == Pwmperiodend::Pending
     }
 }
+#[doc = "Read pending status of interrupt for event PWMREADY\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Pwmready {
+    #[doc = "0: Read: Not pending"]
+    NotPending = 0,
+    #[doc = "1: Read: Pending"]
+    Pending = 1,
+}
+impl From<Pwmready> for bool {
+    #[inline(always)]
+    fn from(variant: Pwmready) -> Self {
+        variant as u8 != 0
+    }
+}
+#[doc = "Field `PWMREADY` reader - Read pending status of interrupt for event PWMREADY"]
+pub type PwmreadyR = crate::BitReader<Pwmready>;
+impl PwmreadyR {
+    #[doc = "Get enumerated values variant"]
+    #[inline(always)]
+    pub const fn variant(&self) -> Pwmready {
+        match self.bits {
+            false => Pwmready::NotPending,
+            true => Pwmready::Pending,
+        }
+    }
+    #[doc = "Read: Not pending"]
+    #[inline(always)]
+    pub fn is_not_pending(&self) -> bool {
+        *self == Pwmready::NotPending
+    }
+    #[doc = "Read: Pending"]
+    #[inline(always)]
+    pub fn is_pending(&self) -> bool {
+        *self == Pwmready::Pending
+    }
+}
+#[doc = "Read pending status of interrupt for event CLKOUTREADY\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Clkoutready {
+    #[doc = "0: Read: Not pending"]
+    NotPending = 0,
+    #[doc = "1: Read: Pending"]
+    Pending = 1,
+}
+impl From<Clkoutready> for bool {
+    #[inline(always)]
+    fn from(variant: Clkoutready) -> Self {
+        variant as u8 != 0
+    }
+}
+#[doc = "Field `CLKOUTREADY` reader - Read pending status of interrupt for event CLKOUTREADY"]
+pub type ClkoutreadyR = crate::BitReader<Clkoutready>;
+impl ClkoutreadyR {
+    #[doc = "Get enumerated values variant"]
+    #[inline(always)]
+    pub const fn variant(&self) -> Clkoutready {
+        match self.bits {
+            false => Clkoutready::NotPending,
+            true => Clkoutready::Pending,
+        }
+    }
+    #[doc = "Read: Not pending"]
+    #[inline(always)]
+    pub fn is_not_pending(&self) -> bool {
+        *self == Clkoutready::NotPending
+    }
+    #[doc = "Read: Pending"]
+    #[inline(always)]
+    pub fn is_pending(&self) -> bool {
+        *self == Clkoutready::Pending
+    }
+}
 impl R {
     #[doc = "Bit 0 - Read pending status of interrupt for event COMPARE\\[0\\]"]
     #[inline(always)]
@@ -574,6 +646,16 @@ impl R {
     #[inline(always)]
     pub fn pwmperiodend(&self) -> PwmperiodendR {
         PwmperiodendR::new(((self.bits >> 27) & 1) != 0)
+    }
+    #[doc = "Bit 29 - Read pending status of interrupt for event PWMREADY"]
+    #[inline(always)]
+    pub fn pwmready(&self) -> PwmreadyR {
+        PwmreadyR::new(((self.bits >> 29) & 1) != 0)
+    }
+    #[doc = "Bit 30 - Read pending status of interrupt for event CLKOUTREADY"]
+    #[inline(always)]
+    pub fn clkoutready(&self) -> ClkoutreadyR {
+        ClkoutreadyR::new(((self.bits >> 30) & 1) != 0)
     }
 }
 #[doc = "Pending interrupts\n\nYou can [`read`](crate::Reg::read) this register and get [`intpend0::R`](R). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]

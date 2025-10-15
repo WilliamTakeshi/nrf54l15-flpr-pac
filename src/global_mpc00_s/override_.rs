@@ -8,8 +8,6 @@ pub struct Override {
     _reserved3: [u8; 0x04],
     perm: Perm,
     permmask: Permmask,
-    owner: Owner,
-    masterport: Masterport,
 }
 impl Override {
     #[doc = "0x00 - Description cluster: Override region n Configuration register"]
@@ -37,16 +35,6 @@ impl Override {
     pub const fn permmask(&self) -> &Permmask {
         &self.permmask
     }
-    #[doc = "0x18 - Description cluster: Owner for override region"]
-    #[inline(always)]
-    pub const fn owner(&self) -> &Owner {
-        &self.owner
-    }
-    #[doc = "0x1c - Description cluster: Override region n local master enable"]
-    #[inline(always)]
-    pub const fn masterport(&self) -> &Masterport {
-        &self.masterport
-    }
 }
 #[doc = "CONFIG (rw) register accessor: Description cluster: Override region n Configuration register\n\nYou can [`read`](crate::Reg::read) this register and get [`config::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`config::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@config`] module"]
 #[doc(alias = "CONFIG")]
@@ -73,13 +61,3 @@ pub mod perm;
 pub type Permmask = crate::Reg<permmask::PermmaskSpec>;
 #[doc = "Description cluster: Masks permission setting fields from register OVERRIDE.PERM"]
 pub mod permmask;
-#[doc = "OWNER (rw) register accessor: Description cluster: Owner for override region\n\nYou can [`read`](crate::Reg::read) this register and get [`owner::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`owner::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@owner`] module"]
-#[doc(alias = "OWNER")]
-pub type Owner = crate::Reg<owner::OwnerSpec>;
-#[doc = "Description cluster: Owner for override region"]
-pub mod owner;
-#[doc = "MASTERPORT (rw) register accessor: Description cluster: Override region n local master enable\n\nYou can [`read`](crate::Reg::read) this register and get [`masterport::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`masterport::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@masterport`] module"]
-#[doc(alias = "MASTERPORT")]
-pub type Masterport = crate::Reg<masterport::MasterportSpec>;
-#[doc = "Description cluster: Override region n local master enable"]
-pub mod masterport;

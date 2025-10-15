@@ -3,18 +3,18 @@ pub type R = crate::R<CandidateSpec>;
 #[doc = "Register `CANDIDATE[%s]` writer"]
 pub type W = crate::W<CandidateSpec>;
 #[doc = "Field `DATA` reader - Data to look for"]
-pub type DataR = crate::FieldReader<u32>;
+pub type DataR = crate::FieldReader;
 #[doc = "Field `DATA` writer - Data to look for"]
-pub type DataW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
+pub type DataW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
-    #[doc = "Bits 0:31 - Data to look for"]
+    #[doc = "Bits 0:7 - Data to look for"]
     #[inline(always)]
     pub fn data(&self) -> DataR {
-        DataR::new(self.bits)
+        DataR::new((self.bits & 0xff) as u8)
     }
 }
 impl W {
-    #[doc = "Bits 0:31 - Data to look for"]
+    #[doc = "Bits 0:7 - Data to look for"]
     #[inline(always)]
     pub fn data(&mut self) -> DataW<'_, CandidateSpec> {
         DataW::new(self, 0)

@@ -6,7 +6,7 @@ pub type W = crate::W<Protect1Spec>;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u32)]
 pub enum Pall {
-    #[doc = "4294967295: Leaves TAMPC PROTECT.AP DBGEN and SPIDEN signal protectors unlocked and under CPU control."]
+    #[doc = "4294967295: Leaves TAMPC PROTECT.AP DBGEN signal protector unlocked and under CPU control."]
     Unprotected = 4294967295,
 }
 impl From<Pall> for u32 {
@@ -30,7 +30,7 @@ impl PallR {
             _ => None,
         }
     }
-    #[doc = "Leaves TAMPC PROTECT.AP DBGEN and SPIDEN signal protectors unlocked and under CPU control."]
+    #[doc = "Leaves TAMPC PROTECT.AP DBGEN signal protector unlocked and under CPU control."]
     #[inline(always)]
     pub fn is_unprotected(&self) -> bool {
         *self == Pall::Unprotected
@@ -43,7 +43,7 @@ where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u32>,
 {
-    #[doc = "Leaves TAMPC PROTECT.AP DBGEN and SPIDEN signal protectors unlocked and under CPU control."]
+    #[doc = "Leaves TAMPC PROTECT.AP DBGEN signal protector unlocked and under CPU control."]
     #[inline(always)]
     pub fn unprotected(self) -> &'a mut crate::W<REG> {
         self.variant(Pall::Unprotected)

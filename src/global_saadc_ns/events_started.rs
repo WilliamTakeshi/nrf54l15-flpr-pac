@@ -2,7 +2,7 @@
 pub type R = crate::R<EventsStartedSpec>;
 #[doc = "Register `EVENTS_STARTED` writer"]
 pub type W = crate::W<EventsStartedSpec>;
-#[doc = "The ADC has started\n\nValue on reset: 0"]
+#[doc = "The ADC DMA has started\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum EventsStarted {
     #[doc = "0: Event not generated"]
@@ -16,7 +16,7 @@ impl From<EventsStarted> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Field `EVENTS_STARTED` reader - The ADC has started"]
+#[doc = "Field `EVENTS_STARTED` reader - The ADC DMA has started"]
 pub type EventsStartedR = crate::BitReader<EventsStarted>;
 impl EventsStartedR {
     #[doc = "Get enumerated values variant"]
@@ -38,7 +38,7 @@ impl EventsStartedR {
         *self == EventsStarted::Generated
     }
 }
-#[doc = "Field `EVENTS_STARTED` writer - The ADC has started"]
+#[doc = "Field `EVENTS_STARTED` writer - The ADC DMA has started"]
 pub type EventsStartedW<'a, REG> = crate::BitWriter<'a, REG, EventsStarted>;
 impl<'a, REG> EventsStartedW<'a, REG>
 where
@@ -56,20 +56,20 @@ where
     }
 }
 impl R {
-    #[doc = "Bit 0 - The ADC has started"]
+    #[doc = "Bit 0 - The ADC DMA has started"]
     #[inline(always)]
     pub fn events_started(&self) -> EventsStartedR {
         EventsStartedR::new((self.bits & 1) != 0)
     }
 }
 impl W {
-    #[doc = "Bit 0 - The ADC has started"]
+    #[doc = "Bit 0 - The ADC DMA has started"]
     #[inline(always)]
     pub fn events_started(&mut self) -> EventsStartedW<'_, EventsStartedSpec> {
         EventsStartedW::new(self, 0)
     }
 }
-#[doc = "The ADC has started\n\nYou can [`read`](crate::Reg::read) this register and get [`events_started::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_started::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "The ADC DMA has started\n\nYou can [`read`](crate::Reg::read) this register and get [`events_started::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`events_started::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct EventsStartedSpec;
 impl crate::RegisterSpec for EventsStartedSpec {
     type Ux = u32;

@@ -5,16 +5,16 @@ pub type W = crate::W<MaxcntSpec>;
 #[doc = "Field `MAXCNT` reader - Maximum number of bytes in channel buffer"]
 pub type MaxcntR = crate::FieldReader<u16>;
 #[doc = "Field `MAXCNT` writer - Maximum number of bytes in channel buffer"]
-pub type MaxcntW<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
+pub type MaxcntW<'a, REG> = crate::FieldWriter<'a, REG, 15, u16>;
 impl R {
-    #[doc = "Bits 0:15 - Maximum number of bytes in channel buffer"]
+    #[doc = "Bits 0:14 - Maximum number of bytes in channel buffer"]
     #[inline(always)]
     pub fn maxcnt(&self) -> MaxcntR {
-        MaxcntR::new((self.bits & 0xffff) as u16)
+        MaxcntR::new((self.bits & 0x7fff) as u16)
     }
 }
 impl W {
-    #[doc = "Bits 0:15 - Maximum number of bytes in channel buffer"]
+    #[doc = "Bits 0:14 - Maximum number of bytes in channel buffer"]
     #[inline(always)]
     pub fn maxcnt(&mut self) -> MaxcntW<'_, MaxcntSpec> {
         MaxcntW::new(self, 0)

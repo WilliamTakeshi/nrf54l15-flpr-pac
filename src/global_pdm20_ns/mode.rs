@@ -58,10 +58,10 @@ where
 #[doc = "Defines on which PDM_CLK edge left (or mono) is sampled.\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Edge {
-    #[doc = "0: Left (or mono) is sampled on falling edge of PDM_CLK"]
-    LeftFalling = 0,
-    #[doc = "1: Left (or mono) is sampled on rising edge of PDM_CLK"]
-    LeftRising = 1,
+    #[doc = "1: Left (or mono) is sampled on falling edge of PDM_CLK"]
+    LeftFalling = 1,
+    #[doc = "0: Left (or mono) is sampled on rising edge of PDM_CLK"]
+    LeftRising = 0,
 }
 impl From<Edge> for bool {
     #[inline(always)]
@@ -76,8 +76,8 @@ impl EdgeR {
     #[inline(always)]
     pub const fn variant(&self) -> Edge {
         match self.bits {
-            false => Edge::LeftFalling,
-            true => Edge::LeftRising,
+            true => Edge::LeftFalling,
+            false => Edge::LeftRising,
         }
     }
     #[doc = "Left (or mono) is sampled on falling edge of PDM_CLK"]

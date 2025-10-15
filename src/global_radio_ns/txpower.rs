@@ -7,6 +7,8 @@ pub type W = crate::W<TxpowerSpec>;
 #[repr(u16)]
 pub enum Txpower {
     #[doc = "63: +8 dBm"]
+    MaxdBm = 63,
+    #[doc = "63: +8 dBm"]
     Pos8dBm = 63,
     #[doc = "57: +7 dBm"]
     Pos7dBm = 57,
@@ -54,14 +56,16 @@ pub enum Txpower {
     Neg18dBm = 3,
     #[doc = "2: -20 dBm"]
     Neg20dBm = 2,
-    // #[doc = "2: -22 dBm"]
-    // Neg22dBm = 2,
+    #[doc = "2: -22 dBm"]
+    Neg22dBm = 2,
     #[doc = "1: -28 dBm"]
     Neg28dBm = 1,
     #[doc = "304: -40 dBm"]
     Neg40dBm = 304,
     #[doc = "272: -46 dBm"]
     Neg46dBm = 272,
+    #[doc = "272: -46 dBm"]
+    MindBm = 272,
 }
 impl From<Txpower> for u16 {
     #[inline(always)]
@@ -80,6 +84,7 @@ impl TxpowerR {
     #[inline(always)]
     pub const fn variant(&self) -> Option<Txpower> {
         match self.bits {
+            63 => Some(Txpower::MaxdBm),
             63 => Some(Txpower::Pos8dBm),
             57 => Some(Txpower::Pos7dBm),
             51 => Some(Txpower::Pos6dBm),
@@ -104,12 +109,18 @@ impl TxpowerR {
             4 => Some(Txpower::Neg16dBm),
             3 => Some(Txpower::Neg18dBm),
             2 => Some(Txpower::Neg20dBm),
-            // 2 => Some(Txpower::Neg22dBm),
+            2 => Some(Txpower::Neg22dBm),
             1 => Some(Txpower::Neg28dBm),
             304 => Some(Txpower::Neg40dBm),
             272 => Some(Txpower::Neg46dBm),
+            272 => Some(Txpower::MindBm),
             _ => None,
         }
+    }
+    #[doc = "+8 dBm"]
+    #[inline(always)]
+    pub fn is_maxd_bm(&self) -> bool {
+        *self == Txpower::MaxdBm
     }
     #[doc = "+8 dBm"]
     #[inline(always)]
@@ -231,11 +242,11 @@ impl TxpowerR {
     pub fn is_neg20d_bm(&self) -> bool {
         *self == Txpower::Neg20dBm
     }
-    // #[doc = "-22 dBm"]
-    // #[inline(always)]
-    // pub fn is_neg22d_bm(&self) -> bool {
-    //     *self == Txpower::Neg22dBm
-    // }
+    #[doc = "-22 dBm"]
+    #[inline(always)]
+    pub fn is_neg22d_bm(&self) -> bool {
+        *self == Txpower::Neg22dBm
+    }
     #[doc = "-28 dBm"]
     #[inline(always)]
     pub fn is_neg28d_bm(&self) -> bool {
@@ -251,6 +262,11 @@ impl TxpowerR {
     pub fn is_neg46d_bm(&self) -> bool {
         *self == Txpower::Neg46dBm
     }
+    #[doc = "-46 dBm"]
+    #[inline(always)]
+    pub fn is_mind_bm(&self) -> bool {
+        *self == Txpower::MindBm
+    }
 }
 #[doc = "Field `TXPOWER` writer - RADIO output power"]
 pub type TxpowerW<'a, REG> = crate::FieldWriter<'a, REG, 11, Txpower>;
@@ -259,6 +275,11 @@ where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u16>,
 {
+    #[doc = "+8 dBm"]
+    #[inline(always)]
+    pub fn maxd_bm(self) -> &'a mut crate::W<REG> {
+        self.variant(Txpower::MaxdBm)
+    }
     #[doc = "+8 dBm"]
     #[inline(always)]
     pub fn pos8d_bm(self) -> &'a mut crate::W<REG> {
@@ -379,11 +400,11 @@ where
     pub fn neg20d_bm(self) -> &'a mut crate::W<REG> {
         self.variant(Txpower::Neg20dBm)
     }
-    // #[doc = "-22 dBm"]
-    // #[inline(always)]
-    // pub fn neg22d_bm(self) -> &'a mut crate::W<REG> {
-    //     self.variant(Txpower::Neg22dBm)
-    // }
+    #[doc = "-22 dBm"]
+    #[inline(always)]
+    pub fn neg22d_bm(self) -> &'a mut crate::W<REG> {
+        self.variant(Txpower::Neg22dBm)
+    }
     #[doc = "-28 dBm"]
     #[inline(always)]
     pub fn neg28d_bm(self) -> &'a mut crate::W<REG> {
@@ -398,6 +419,11 @@ where
     #[inline(always)]
     pub fn neg46d_bm(self) -> &'a mut crate::W<REG> {
         self.variant(Txpower::Neg46dBm)
+    }
+    #[doc = "-46 dBm"]
+    #[inline(always)]
+    pub fn mind_bm(self) -> &'a mut crate::W<REG> {
+        self.variant(Txpower::MindBm)
     }
 }
 impl R {

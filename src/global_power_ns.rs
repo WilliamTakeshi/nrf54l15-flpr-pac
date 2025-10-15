@@ -11,17 +11,16 @@ pub struct RegisterBlock {
     events_pofwarn: EventsPofwarn,
     events_sleepenter: EventsSleepenter,
     events_sleepexit: EventsSleepexit,
-    _reserved7: [u8; 0x74],
-    publish_pofwarn: PublishPofwarn,
+    _reserved7: [u8; 0x78],
     publish_sleepenter: PublishSleepenter,
     publish_sleepexit: PublishSleepexit,
-    _reserved10: [u8; 0x0144],
+    _reserved9: [u8; 0x0144],
     inten: Inten,
     intenset: Intenset,
     intenclr: Intenclr,
-    _reserved13: [u8; 0x01f4],
+    _reserved12: [u8; 0x01f4],
     gpregret: [Gpregret; 2],
-    _reserved14: [u8; 0x08],
+    _reserved13: [u8; 0x18],
     constlatstat: Constlatstat,
 }
 impl RegisterBlock {
@@ -60,11 +59,6 @@ impl RegisterBlock {
     pub const fn events_sleepexit(&self) -> &EventsSleepexit {
         &self.events_sleepexit
     }
-    #[doc = "0x1b0 - Publish configuration for event POFWARN"]
-    #[inline(always)]
-    pub const fn publish_pofwarn(&self) -> &PublishPofwarn {
-        &self.publish_pofwarn
-    }
     #[doc = "0x1b4 - Publish configuration for event SLEEPENTER"]
     #[inline(always)]
     pub const fn publish_sleepenter(&self) -> &PublishSleepenter {
@@ -101,7 +95,7 @@ impl RegisterBlock {
     pub fn gpregret_iter(&self) -> impl Iterator<Item = &Gpregret> {
         self.gpregret.iter()
     }
-    #[doc = "0x510 - Status of constant latency"]
+    #[doc = "0x520 - Status of constant latency"]
     #[inline(always)]
     pub const fn constlatstat(&self) -> &Constlatstat {
         &self.constlatstat
@@ -142,11 +136,6 @@ pub mod events_sleepenter;
 pub type EventsSleepexit = crate::Reg<events_sleepexit::EventsSleepexitSpec>;
 #[doc = "CPU exited WFI/WFE sleep"]
 pub mod events_sleepexit;
-#[doc = "PUBLISH_POFWARN (rw) register accessor: Publish configuration for event POFWARN\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_pofwarn::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_pofwarn::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_pofwarn`] module"]
-#[doc(alias = "PUBLISH_POFWARN")]
-pub type PublishPofwarn = crate::Reg<publish_pofwarn::PublishPofwarnSpec>;
-#[doc = "Publish configuration for event POFWARN"]
-pub mod publish_pofwarn;
 #[doc = "PUBLISH_SLEEPENTER (rw) register accessor: Publish configuration for event SLEEPENTER\n\nYou can [`read`](crate::Reg::read) this register and get [`publish_sleepenter::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`publish_sleepenter::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@publish_sleepenter`] module"]
 #[doc(alias = "PUBLISH_SLEEPENTER")]
 pub type PublishSleepenter = crate::Reg<publish_sleepenter::PublishSleepenterSpec>;

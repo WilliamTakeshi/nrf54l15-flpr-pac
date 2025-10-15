@@ -22,7 +22,7 @@ impl Dma {
 pub type Terminateonbuserror = crate::Reg<terminateonbuserror::TerminateonbuserrorSpec>;
 #[doc = "Terminate the transaction if a BUSERROR event is detected."]
 pub mod terminateonbuserror;
-#[doc = "BUSERRORADDRESS (rw) register accessor: Address of transaction that generated the last BUSERROR event.\n\nYou can [`read`](crate::Reg::read) this register and get [`buserroraddress::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`buserroraddress::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@buserroraddress`] module"]
+#[doc = "BUSERRORADDRESS (r) register accessor: Address of transaction that generated the last BUSERROR event.\n\nYou can [`read`](crate::Reg::read) this register and get [`buserroraddress::R`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@buserroraddress`] module"]
 #[doc(alias = "BUSERRORADDRESS")]
 pub type Buserroraddress = crate::Reg<buserroraddress::BuserroraddressSpec>;
 #[doc = "Address of transaction that generated the last BUSERROR event."]

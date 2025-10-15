@@ -2,7 +2,7 @@
 pub type R = crate::R<LimithSpec>;
 #[doc = "Register `LIMITH` writer"]
 pub type W = crate::W<LimithSpec>;
-#[doc = "Last results is equal or above CH\\[n\\].LIMIT.HIGH\n\nValue on reset: 0"]
+#[doc = "Last results is above CH\\[n\\].LIMIT.HIGH\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Limith {
     #[doc = "0: Event not generated"]
@@ -16,7 +16,7 @@ impl From<Limith> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Field `LIMITH` reader - Last results is equal or above CH\\[n\\].LIMIT.HIGH"]
+#[doc = "Field `LIMITH` reader - Last results is above CH\\[n\\].LIMIT.HIGH"]
 pub type LimithR = crate::BitReader<Limith>;
 impl LimithR {
     #[doc = "Get enumerated values variant"]
@@ -38,7 +38,7 @@ impl LimithR {
         *self == Limith::Generated
     }
 }
-#[doc = "Field `LIMITH` writer - Last results is equal or above CH\\[n\\].LIMIT.HIGH"]
+#[doc = "Field `LIMITH` writer - Last results is above CH\\[n\\].LIMIT.HIGH"]
 pub type LimithW<'a, REG> = crate::BitWriter<'a, REG, Limith>;
 impl<'a, REG> LimithW<'a, REG>
 where
@@ -56,20 +56,20 @@ where
     }
 }
 impl R {
-    #[doc = "Bit 0 - Last results is equal or above CH\\[n\\].LIMIT.HIGH"]
+    #[doc = "Bit 0 - Last results is above CH\\[n\\].LIMIT.HIGH"]
     #[inline(always)]
     pub fn limith(&self) -> LimithR {
         LimithR::new((self.bits & 1) != 0)
     }
 }
 impl W {
-    #[doc = "Bit 0 - Last results is equal or above CH\\[n\\].LIMIT.HIGH"]
+    #[doc = "Bit 0 - Last results is above CH\\[n\\].LIMIT.HIGH"]
     #[inline(always)]
     pub fn limith(&mut self) -> LimithW<'_, LimithSpec> {
         LimithW::new(self, 0)
     }
 }
-#[doc = "Description cluster: Last results is equal or above CH\\[n\\].LIMIT.HIGH\n\nYou can [`read`](crate::Reg::read) this register and get [`limith::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`limith::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Description cluster: Last results is above CH\\[n\\].LIMIT.HIGH\n\nYou can [`read`](crate::Reg::read) this register and get [`limith::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`limith::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct LimithSpec;
 impl crate::RegisterSpec for LimithSpec {
     type Ux = u32;
