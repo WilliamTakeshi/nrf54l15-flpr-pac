@@ -90,6 +90,8 @@ pub enum Interrupt {
     SPU10 = 128,
     #[doc = "133 - TIMER10"]
     TIMER10 = 133,
+    #[doc = "134 - RTC10"]
+    RTC10 = 134,
     #[doc = "135 - EGU10"]
     EGU10 = 135,
     #[doc = "138 - RADIO_0"]
@@ -156,6 +158,8 @@ pub enum Interrupt {
     SPU30 = 256,
     #[doc = "260 - SERIAL30"]
     SERIAL30 = 260,
+    #[doc = "261 - CLOCK_POWER"]
+    CLOCK_POWER = 261,
     #[doc = "262 - COMP_LPCOMP"]
     COMP_LPCOMP = 262,
     #[doc = "264 - WDT30"]
@@ -173,7 +177,7 @@ pub struct TryFromInterruptError(());
 impl Interrupt {
     #[doc = r" Attempt to convert a given value into an `Interrupt`"]
     #[inline]
-    pub fn try_from(value: u8) -> Result<Self, TryFromInterruptError> {
+    pub fn try_from(value: u16) -> Result<Self, TryFromInterruptError> {
         match value {
             0 => Ok(Interrupt::VPRCLIC_0),
             1 => Ok(Interrupt::VPRCLIC_1),
@@ -219,6 +223,7 @@ impl Interrupt {
             85 => Ok(Interrupt::TIMER00),
             128 => Ok(Interrupt::SPU10),
             133 => Ok(Interrupt::TIMER10),
+            134 => Ok(Interrupt::RTC10),
             135 => Ok(Interrupt::EGU10),
             138 => Ok(Interrupt::RADIO_0),
             139 => Ok(Interrupt::RADIO_1),
@@ -252,6 +257,7 @@ impl Interrupt {
             229 => Ok(Interrupt::GRTC_3),
             256 => Ok(Interrupt::SPU30),
             260 => Ok(Interrupt::SERIAL30),
+            261 => Ok(Interrupt::CLOCK_POWER),
             262 => Ok(Interrupt::COMP_LPCOMP),
             264 => Ok(Interrupt::WDT30),
             265 => Ok(Interrupt::WDT31),

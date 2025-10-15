@@ -8,10 +8,6 @@ pub type W = crate::W<NoiseshapeSpec>;
 pub enum Noiseshape {
     #[doc = "0: Disable noiseshaping. Configurable oversampling."]
     Disable = 0,
-    #[doc = "1: Noiseshaping and decimating. Larger passband. Decimation ratio 8, 125 kS/s, with resulting bandwidth around 45 kHz. Takes precedence over the OVERSAMPLING register."]
-    Ns1 = 1,
-    #[doc = "2: Noiseshaping and decimating. Smaller passband. Decimation ratio 32, 31.25 kS/s, with resulting bandwidth around 7 kHz. Takes precedence over the OVERSAMPLING register."]
-    Ns2 = 2,
     #[doc = "1: Deprecated enumerator - Use enumerator NS1 for future compatibility."]
     Audio = 1,
     #[doc = "2: Deprecated enumerator - Use enumerator NS2 for future compatibility."]
@@ -35,8 +31,6 @@ impl NoiseshapeR {
     pub const fn variant(&self) -> Option<Noiseshape> {
         match self.bits {
             0 => Some(Noiseshape::Disable),
-            1 => Some(Noiseshape::Ns1),
-            2 => Some(Noiseshape::Ns2),
             1 => Some(Noiseshape::Audio),
             2 => Some(Noiseshape::Accuracy),
             _ => None,
@@ -46,16 +40,6 @@ impl NoiseshapeR {
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == Noiseshape::Disable
-    }
-    #[doc = "Noiseshaping and decimating. Larger passband. Decimation ratio 8, 125 kS/s, with resulting bandwidth around 45 kHz. Takes precedence over the OVERSAMPLING register."]
-    #[inline(always)]
-    pub fn is_ns1(&self) -> bool {
-        *self == Noiseshape::Ns1
-    }
-    #[doc = "Noiseshaping and decimating. Smaller passband. Decimation ratio 32, 31.25 kS/s, with resulting bandwidth around 7 kHz. Takes precedence over the OVERSAMPLING register."]
-    #[inline(always)]
-    pub fn is_ns2(&self) -> bool {
-        *self == Noiseshape::Ns2
     }
     #[doc = "Deprecated enumerator - Use enumerator NS1 for future compatibility."]
     #[inline(always)]
@@ -79,16 +63,6 @@ where
     #[inline(always)]
     pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(Noiseshape::Disable)
-    }
-    #[doc = "Noiseshaping and decimating. Larger passband. Decimation ratio 8, 125 kS/s, with resulting bandwidth around 45 kHz. Takes precedence over the OVERSAMPLING register."]
-    #[inline(always)]
-    pub fn ns1(self) -> &'a mut crate::W<REG> {
-        self.variant(Noiseshape::Ns1)
-    }
-    #[doc = "Noiseshaping and decimating. Smaller passband. Decimation ratio 32, 31.25 kS/s, with resulting bandwidth around 7 kHz. Takes precedence over the OVERSAMPLING register."]
-    #[inline(always)]
-    pub fn ns2(self) -> &'a mut crate::W<REG> {
-        self.variant(Noiseshape::Ns2)
     }
     #[doc = "Deprecated enumerator - Use enumerator NS1 for future compatibility."]
     #[inline(always)]
